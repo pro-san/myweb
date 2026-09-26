@@ -1,0 +1,84 @@
+import React from 'react';
+
+export const QualitySection: React.FC = () => {
+  return (
+    <section className="py-20 bg-slate-900 text-white border-t border-b border-slate-800 relative overflow-hidden">
+      {/* Dark grid background pattern */}
+      <div className="absolute inset-0 dark-grid-pattern opacity-20 pointer-events-none"></div>
+
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span className="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider font-extrabold text-amber-300 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-1 mb-3">
+            <i className="fa-solid fa-shield-halved"></i>
+            <span>Zero Crash Guarantee</span>
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">
+            Code Quality & Strict QA Testing
+          </h2>
+          <div className="h-1 w-16 bg-gradient-to-r from-amber-400 to-emerald-400 rounded mx-auto mb-4"></div>
+          <p className="text-slate-400 text-base sm:text-lg">
+            I don't just write code; I engineer reliable, resilient systems. Every project undergoes rigorous end-to-end stress testing prior to deployment.
+          </p>
+        </div>
+
+        {/* 3 Quality Pillars */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Pillar 1 */}
+          <div className="bg-slate-800/60 border border-slate-700/70 hover:border-emerald-500/50 rounded-2xl p-7 text-center transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between">
+            <div>
+              <div className="w-16 h-16 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-3xl mx-auto mb-5 border border-emerald-500/20">
+                <i className="fa-solid fa-bug-slash"></i>
+              </div>
+              <h3 className="text-lg font-bold text-white mb-3">
+                Automated Testing
+              </h3>
+              <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                Using Selenium, Playwright, and Postman API testing to simulate thousands of concurrent user interactions and preemptively catch edge cases.
+              </p>
+            </div>
+            <div className="mt-6 pt-3 border-t border-slate-700/50 text-[11px] font-mono text-emerald-400">
+              Coverage: Unit, Integration & E2E
+            </div>
+          </div>
+
+          {/* Pillar 2 */}
+          <div className="bg-slate-800/60 border border-slate-700/70 hover:border-sky-500/50 rounded-2xl p-7 text-center transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between">
+            <div>
+              <div className="w-16 h-16 rounded-2xl bg-sky-500/10 text-sky-400 flex items-center justify-center text-3xl mx-auto mb-5 border border-sky-500/20">
+                <i className="fa-solid fa-shield-halved"></i>
+              </div>
+              <h3 className="text-lg font-bold text-white mb-3">
+                Security & Protection
+              </h3>
+              <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                Built-in protection against SQL injection, XSS vulnerabilities, strict API rate-limiting, and deep browser fingerprint obfuscation for web scrapers.
+              </p>
+            </div>
+            <div className="mt-6 pt-3 border-t border-slate-700/50 text-[11px] font-mono text-sky-400">
+              Sanitized Inputs & Token Guards
+            </div>
+          </div>
+
+          {/* Pillar 3 */}
+          <div className="bg-slate-800/60 border border-slate-700/70 hover:border-amber-500/50 rounded-2xl p-7 text-center transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between">
+            <div>
+              <div className="w-16 h-16 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-3xl mx-auto mb-5 border border-amber-500/20">
+                <i className="fa-solid fa-server"></i>
+              </div>
+              <h3 className="text-lg font-bold text-white mb-3">
+                Performance Profiling
+              </h3>
+              <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                Database query optimization with SQLite WAL concurrency and memory leak audits to guarantee 0% crash rates under heavy commercial data traffic.
+              </p>
+            </div>
+            <div className="mt-6 pt-3 border-t border-slate-700/50 text-[11px] font-mono text-amber-400">
+              Benchmark: &lt;20ms Queries & 0% Crashes
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
