@@ -46,7 +46,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEstimator }) => {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(37,99,235,0.3)_0%,rgba(30,60,114,0)_70%)] pointer-events-none"></div>
 
       {/* Decorative wave divider at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-10 md:h-14 bg-slate-50 [clip-path:polygon(0_100%,100%_100%,100%_0)]"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-10 md:h-14 bg-slate-50 dark:bg-slate-950 transition-colors duration-200 [clip-path:polygon(0_100%,100%_100%,100%_0)]"></div>
 
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 text-center z-10">
         {/* Availability Badge */}
@@ -99,15 +99,13 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEstimator }) => {
           </a>
 
           <a
-            href={`https://wa.me/${PERSONAL_INFO.whatsappRaw}?text=${encodeURIComponent(
-              PERSONAL_INFO.whatsappMessage
-            )}`}
+            href={PERSONAL_INFO.telegramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="animate-pulse-glow inline-flex items-center gap-2.5 bg-[#25D366] hover:bg-[#1eb956] text-white font-bold text-base px-7 py-3.5 rounded-full shadow-xl transition-all duration-300 hover:-translate-y-0.5"
+            className="animate-pulse-glow inline-flex items-center gap-2.5 bg-[#24A1DE] hover:bg-[#1e88be] text-white font-bold text-base px-7 py-3.5 rounded-full shadow-xl shadow-sky-500/25 transition-all duration-300 hover:-translate-y-0.5"
           >
-            <i className="fa-brands fa-whatsapp text-xl"></i>
-            <span>Hire Me on WhatsApp</span>
+            <i className="fa-brands fa-telegram text-xl"></i>
+            <span>Telegram Chat</span>
           </a>
 
           {onOpenEstimator && (

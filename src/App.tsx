@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ScrollProgressBar } from './components/ScrollProgressBar';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { StatsBanner } from './components/StatsBanner';
@@ -12,8 +13,9 @@ import { QualitySection } from './components/QualitySection';
 import { TestimonialsSection } from './components/TestimonialsSection';
 import { AboutSection } from './components/AboutSection';
 import { ContactSection } from './components/ContactSection';
+import { FAQSection } from './components/FAQSection';
 import { Footer } from './components/Footer';
-import { FloatingWhatsApp } from './components/FloatingWhatsApp';
+import { FloatingTelegram } from './components/FloatingTelegram';
 import { BackToTop } from './components/BackToTop';
 import { Toast } from './components/Toast';
 
@@ -40,7 +42,10 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans selection:bg-blue-600 selection:text-white">
+    <div className="min-h-screen bg-[var(--color-bg-base)] text-[var(--color-text-main)] dark:bg-slate-950 dark:text-slate-100 flex flex-col font-sans selection:bg-blue-600 selection:text-white transition-colors duration-200">
+      {/* Scroll Progress Bar at the very top */}
+      <ScrollProgressBar />
+
       {/* Navigation */}
       <Navbar onOpenEstimator={() => setIsEstimatorOpen(true)} />
 
@@ -82,6 +87,9 @@ export default function App() {
           initialMessage={contactInitialMessage}
           onSuccessMessage={() => setShowSuccessToast(true)}
         />
+
+        {/* Frequently Asked Questions Section (Process, Pricing, Timelines) */}
+        <FAQSection />
       </main>
 
       {/* Interactive Project Cost & Timeline Estimator Modal */}
@@ -94,8 +102,8 @@ export default function App() {
       {/* Footer */}
       <Footer />
 
-      {/* Persistent Floating WhatsApp Action Widget */}
-      <FloatingWhatsApp />
+      {/* Persistent Floating Telegram Action Widget */}
+      <FloatingTelegram />
 
       {/* Floating Back To Top Button */}
       <BackToTop />

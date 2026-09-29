@@ -76,18 +76,18 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   };
 
   return (
-    <section id="contact" className="py-20 bg-slate-50 relative">
+    <section id="contact" className="py-20 bg-slate-50 dark:bg-slate-950 relative transition-colors duration-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-block text-xs uppercase tracking-wider font-extrabold text-emerald-700 bg-emerald-100/80 border border-emerald-300 rounded-full px-4 py-1 mb-3">
+          <span className="inline-block text-xs uppercase tracking-wider font-extrabold text-emerald-700 dark:text-emerald-400 bg-emerald-100/80 dark:bg-emerald-950/80 border border-emerald-300 dark:border-emerald-800 rounded-full px-4 py-1 mb-3">
             GET IN TOUCH
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-4">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight mb-4">
             Let's Work Together
           </h2>
           <div className="h-1 w-16 bg-gradient-to-r from-emerald-500 to-blue-600 rounded mx-auto mb-4"></div>
-          <p className="text-slate-600 text-base sm:text-lg">
+          <p className="text-slate-600 dark:text-slate-400 text-base sm:text-lg">
             Have a web application or automation project in mind? Send a message for an instant estimate and free technical consultation.
           </p>
         </div>
@@ -109,24 +109,22 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               </p>
 
               <div className="space-y-4">
-                {/* WhatsApp */}
+                {/* Telegram */}
                 <a
-                  href={`https://wa.me/${PERSONAL_INFO.whatsappRaw}?text=${encodeURIComponent(
-                    PERSONAL_INFO.whatsappMessage
-                  )}`}
+                  href={PERSONAL_INFO.telegramUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-200 group"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-emerald-500 text-white flex items-center justify-center text-2xl shadow-md group-hover:scale-110 transition-transform">
-                    <i className="fa-brands fa-whatsapp"></i>
+                  <div className="w-12 h-12 rounded-xl bg-[#24A1DE] text-white flex items-center justify-center text-2xl shadow-md group-hover:scale-110 transition-transform">
+                    <i className="fa-brands fa-telegram"></i>
                   </div>
                   <div>
-                    <div className="text-xs uppercase font-extrabold text-emerald-400 tracking-wider">
-                      WhatsApp Direct
+                    <div className="text-xs uppercase font-extrabold text-sky-400 tracking-wider">
+                      Telegram Direct
                     </div>
                     <div className="text-sm sm:text-base font-bold text-white">
-                      {PERSONAL_INFO.whatsappNumber}
+                      {PERSONAL_INFO.telegramHandle}
                     </div>
                   </div>
                 </a>
@@ -169,49 +167,49 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
             {/* Quick availability pill */}
             <div className="mt-8 pt-6 border-t border-white/10 flex items-center gap-2 text-xs text-slate-300">
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span>Accepting new client contracts & bot architectures</span>
+              <span>Accepting new client contracts &amp; bot architectures</span>
             </div>
           </div>
 
           {/* Right Contact Form Card */}
-          <div className="lg:col-span-7 bg-white rounded-3xl p-8 sm:p-10 shadow-xl border border-slate-200/80 flex flex-col justify-between">
+          <div className="lg:col-span-7 bg-white dark:bg-slate-900 rounded-3xl p-8 sm:p-10 shadow-xl border border-slate-200/80 dark:border-slate-800 flex flex-col justify-between transition-colors duration-200">
             <div>
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-2xl font-black text-slate-900 flex items-center gap-2.5">
+                <h3 className="text-2xl font-black text-slate-900 dark:text-slate-100 flex items-center gap-2.5">
                   <span>Send a Message</span>
-                  <i className="fa-solid fa-paper-plane text-blue-600 text-lg"></i>
+                  <i className="fa-solid fa-paper-plane text-blue-600 dark:text-blue-400 text-lg"></i>
                 </h3>
-                <span className="text-xs text-slate-500 font-semibold">
+                <span className="text-xs text-slate-500 dark:text-slate-400 font-semibold">
                   * Required fields
                 </span>
               </div>
 
               {submitStatus === 'success' && (
-                <div className="p-4 mb-6 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs sm:text-sm font-semibold flex items-start gap-3">
-                  <i className="fa-solid fa-circle-check text-emerald-600 text-lg mt-0.5"></i>
+                <div className="p-4 mb-6 rounded-2xl bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 text-xs sm:text-sm font-semibold flex items-start gap-3">
+                  <i className="fa-solid fa-circle-check text-emerald-600 dark:text-emerald-400 text-lg mt-0.5"></i>
                   <div>
                     <div className="font-bold">Message Delivered!</div>
                     <div className="mt-0.5">
-                      PRO DIGITAL will respond via email or WhatsApp shortly.
+                      PRO DIGITAL will respond via email or Telegram shortly.
                     </div>
                   </div>
                 </div>
               )}
 
               {submitStatus === 'error' && (
-                <div className="p-4 mb-6 rounded-2xl bg-rose-50 border border-rose-200 text-rose-800 text-xs sm:text-sm font-semibold flex items-start gap-3">
-                  <i className="fa-solid fa-triangle-exclamation text-rose-600 text-lg mt-0.5"></i>
+                <div className="p-4 mb-6 rounded-2xl bg-rose-50 dark:bg-rose-950/50 border border-rose-200 dark:border-rose-800 text-rose-800 dark:text-rose-300 text-xs sm:text-sm font-semibold flex items-start gap-3">
+                  <i className="fa-solid fa-triangle-exclamation text-rose-600 dark:text-rose-400 text-lg mt-0.5"></i>
                   <div>
                     <div className="font-bold">Submission Notice</div>
                     <div className="mt-0.5">
-                      Could not dispatch form. You can chat directly on WhatsApp:{' '}
+                      Could not dispatch form. You can chat directly on Telegram:{' '}
                       <a
-                        href={`https://wa.me/${PERSONAL_INFO.whatsappRaw}`}
+                        href={PERSONAL_INFO.telegramUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="underline font-bold text-emerald-700"
+                        className="underline font-bold text-sky-700 dark:text-sky-400"
                       >
-                        {PERSONAL_INFO.whatsappNumber}
+                        {PERSONAL_INFO.telegramHandle}
                       </a>
                     </div>
                   </div>
@@ -221,7 +219,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold uppercase text-slate-600 tracking-wider mb-2">
+                    <label className="block text-xs font-bold uppercase text-slate-600 dark:text-slate-300 tracking-wider mb-2">
                       Your Full Name *
                     </label>
                     <input
@@ -230,12 +228,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       placeholder="John Smith"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-600/10 text-sm text-slate-900 transition-all outline-none"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:bg-white dark:focus:bg-slate-800 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/10 text-sm text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 transition-all outline-none"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold uppercase text-slate-600 tracking-wider mb-2">
+                    <label className="block text-xs font-bold uppercase text-slate-600 dark:text-slate-300 tracking-wider mb-2">
                       Email Address *
                     </label>
                     <input
@@ -244,20 +242,20 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       placeholder="name@example.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-600/10 text-sm text-slate-900 transition-all outline-none"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:bg-white dark:focus:bg-slate-800 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/10 text-sm text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 transition-all outline-none"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold uppercase text-slate-600 tracking-wider mb-2">
+                  <label className="block text-xs font-bold uppercase text-slate-600 dark:text-slate-300 tracking-wider mb-2">
                     Project Type / Subject *
                   </label>
                   <select
                     required
                     value={service}
                     onChange={(e) => setService(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-600/10 text-sm text-slate-900 transition-all outline-none"
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:bg-white dark:focus:bg-slate-800 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/10 text-sm text-slate-900 dark:text-slate-100 transition-all outline-none"
                   >
                     <option value="">-- Select Service Needed --</option>
                     <option value="Custom Web Application Development">
@@ -276,7 +274,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold uppercase text-slate-600 tracking-wider mb-2">
+                  <label className="block text-xs font-bold uppercase text-slate-600 dark:text-slate-300 tracking-wider mb-2">
                     Message / Project Details *
                   </label>
                   <textarea
@@ -285,7 +283,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                     placeholder="Describe your project goals, timeline, or requirements..."
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-600/10 text-sm text-slate-900 transition-all outline-none resize-none"
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:bg-white dark:focus:bg-slate-800 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/10 text-sm text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 transition-all outline-none resize-none"
                   ></textarea>
                 </div>
 
@@ -309,17 +307,15 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               </form>
             </div>
 
-            <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+            <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-400 dark:text-slate-500">
               <span>Encrypted via Formspree Endpoint</span>
               <a
-                href={`https://wa.me/${PERSONAL_INFO.whatsappRaw}?text=${encodeURIComponent(
-                  'Hi PRO DIGITAL! I would prefer to chat directly on WhatsApp about my project.'
-                )}`}
+                href={PERSONAL_INFO.telegramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#25D366] hover:underline font-bold flex items-center gap-1"
+                className="text-[#24A1DE] hover:underline font-bold flex items-center gap-1.5"
               >
-                <i className="fa-brands fa-whatsapp"></i> Chat on WhatsApp Instead
+                <i className="fa-brands fa-telegram text-base"></i> Chat on Telegram Instead
               </a>
             </div>
           </div>

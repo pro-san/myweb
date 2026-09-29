@@ -43,21 +43,21 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/70 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-200 flex flex-col">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in duration-200">
+      <div className="bg-white dark:bg-slate-900 rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-200 dark:border-slate-800 flex flex-col transition-colors duration-200">
         {/* Modal Header */}
-        <div className="p-6 border-b border-slate-100 flex items-center justify-between sticky top-0 bg-white/95 backdrop-blur z-10">
+        <div className="p-6 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between sticky top-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur z-10">
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-purple-600 bg-purple-50 px-2.5 py-1 rounded-full border border-purple-200">
+            <span className="text-xs font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/60 px-2.5 py-1 rounded-full border border-purple-200 dark:border-purple-800/60">
               {project.tag}
             </span>
-            <h3 className="text-2xl font-black text-slate-900 mt-2">
+            <h3 className="text-2xl font-black text-slate-900 dark:text-slate-100 mt-2">
               {project.title}
             </h3>
           </div>
           <button
             onClick={onClose}
-            className="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 flex items-center justify-center transition-colors cursor-pointer"
+            className="w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-100 flex items-center justify-center transition-colors cursor-pointer"
             aria-label="Close modal"
           >
             <i className="fa-solid fa-xmark text-lg"></i>
@@ -65,13 +65,13 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex border-b border-slate-200 px-6 gap-6 bg-slate-50 text-sm font-bold">
+        <div className="flex border-b border-slate-200 dark:border-slate-800 px-6 gap-6 bg-slate-50 dark:bg-slate-950 text-sm font-bold">
           <button
             onClick={() => setActiveTab('overview')}
             className={`py-3.5 border-b-2 transition-all cursor-pointer ${
               activeTab === 'overview'
-                ? 'border-blue-600 text-blue-600'
-                : 'border-transparent text-slate-500 hover:text-slate-800'
+                ? 'border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400'
+                : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
             }`}
           >
             <i className="fa-solid fa-circle-info mr-2"></i> Project Details
@@ -80,8 +80,8 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
             onClick={() => setActiveTab('architecture')}
             className={`py-3.5 border-b-2 transition-all cursor-pointer ${
               activeTab === 'architecture'
-                ? 'border-blue-600 text-blue-600'
-                : 'border-transparent text-slate-500 hover:text-slate-800'
+                ? 'border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400'
+                : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
             }`}
           >
             <i className="fa-solid fa-network-wired mr-2"></i> Architecture & Engineering
@@ -91,8 +91,8 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
               onClick={() => setActiveTab('simulation')}
               className={`py-3.5 border-b-2 transition-all cursor-pointer ${
                 activeTab === 'simulation'
-                  ? 'border-blue-600 text-blue-600'
-                  : 'border-transparent text-slate-500 hover:text-slate-800'
+                  ? 'border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400'
+                  : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
               }`}
             >
               <i className="fa-solid fa-terminal mr-2"></i> Live Terminal Simulator
@@ -101,14 +101,14 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
         </div>
 
         {/* Modal Content */}
-        <div className="p-6 flex-1 space-y-6">
+        <div className="p-6 flex-1 space-y-6 text-slate-700 dark:text-slate-300">
           {activeTab === 'overview' && (
             <>
               <div>
-                <h4 className="text-sm font-extrabold uppercase text-slate-400 tracking-wider mb-2">
+                <h4 className="text-sm font-extrabold uppercase text-slate-400 dark:text-slate-500 tracking-wider mb-2">
                   Comprehensive Summary
                 </h4>
-                <p className="text-slate-700 leading-relaxed text-base">
+                <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-base">
                   {project.longDescription}
                 </p>
               </div>
@@ -250,17 +250,15 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
         </div>
 
         {/* Modal Footer */}
-        <div className="p-6 bg-slate-50 border-t border-slate-200 flex flex-wrap items-center justify-between gap-4">
+        <div className="p-6 bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-4 transition-colors duration-200">
           <a
-            href={`https://wa.me/${PERSONAL_INFO.whatsappRaw}?text=${encodeURIComponent(
-              `Hi PRO DIGITAL! I am inquiring about the ${project.title} from your portfolio.`
-            )}`}
+            href={PERSONAL_INFO.telegramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-[#25D366] hover:text-emerald-700 font-bold text-sm"
+            className="inline-flex items-center gap-2 text-[#24A1DE] hover:text-sky-400 font-bold text-sm"
           >
-            <i className="fa-brands fa-whatsapp text-lg"></i>
-            <span>Discuss Custom Build on WhatsApp</span>
+            <i className="fa-brands fa-telegram text-lg"></i>
+            <span>Discuss Custom Build on Telegram</span>
           </a>
 
           <a

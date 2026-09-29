@@ -64,3 +64,11 @@ export interface RunnableModule {
   codeLines: string[];
   steps: CodeStep[];
 }
+
+export interface FaqItem {
+  id: string;
+  category: 'process' | 'pricing' | 'timeline';
+  question: string;
+  answer: string;
+  highlights?: string[];
+}

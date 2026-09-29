@@ -64,20 +64,20 @@ export const ProcessSection: React.FC = () => {
   const currentDetail = stepDetails[selectedStepIdx];
 
   return (
-    <section id="process" className="py-20 bg-white relative overflow-hidden border-b border-slate-200">
+    <section id="process" className="py-20 bg-white dark:bg-slate-900/60 relative overflow-hidden border-b border-slate-200 dark:border-slate-800 transition-colors duration-200">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(30,60,114,0.03)_0%,transparent_70%)] pointer-events-none"></div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-block text-xs uppercase tracking-wider font-extrabold text-blue-700 bg-blue-100/80 border border-blue-300 rounded-full px-4 py-1 mb-3">
+          <span className="inline-block text-xs uppercase tracking-wider font-extrabold text-blue-700 dark:text-blue-300 bg-blue-100/80 dark:bg-blue-950/80 border border-blue-300 dark:border-blue-800 rounded-full px-4 py-1 mb-3">
             WORK PHILOSOPHY
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-4">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight mb-4">
             How I Work — 6-Step Process
           </h2>
           <div className="h-1 w-16 bg-gradient-to-r from-blue-700 to-emerald-500 rounded mx-auto mb-4"></div>
-          <p className="text-slate-600 text-base sm:text-lg">
+          <p className="text-slate-600 dark:text-slate-400 text-base sm:text-lg">
             A structured, transparent development methodology. Click on any step to inspect deliverables, duration, and architectural artifacts.
           </p>
         </div>
@@ -85,7 +85,7 @@ export const ProcessSection: React.FC = () => {
         {/* Process Flow Cards (Clickable Steps) */}
         <div className="relative mt-8 mb-12">
           {/* Animated Connecting Line (desktop only) */}
-          <div className="hidden lg:block absolute top-[45px] left-[5%] right-[5%] h-1 bg-gradient-to-r from-slate-200 via-emerald-400 to-blue-700 animate-gradient-flow rounded-full opacity-60 z-0"></div>
+          <div className="hidden lg:block absolute top-[45px] left-[5%] right-[5%] h-1 bg-gradient-to-r from-slate-200 dark:from-slate-800 via-emerald-400 to-blue-700 animate-gradient-flow rounded-full opacity-60 z-0"></div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 relative z-10">
             {PROCESS_STEPS.map((item, idx) => {
@@ -98,8 +98,8 @@ export const ProcessSection: React.FC = () => {
                   onClick={() => setSelectedStepIdx(idx)}
                   className={`group rounded-2xl p-4 sm:p-5 text-center transition-all duration-300 flex flex-col justify-between cursor-pointer border ${
                     isSelected
-                      ? 'bg-blue-50/90 border-blue-600 shadow-xl ring-2 ring-blue-500/20 -translate-y-2'
-                      : 'bg-white border-slate-200/80 hover:border-blue-300 hover:shadow-md'
+                      ? 'bg-blue-50/90 dark:bg-blue-950/60 border-blue-600 dark:border-blue-500 shadow-xl ring-2 ring-blue-500/20 -translate-y-2'
+                      : 'bg-white dark:bg-slate-800/80 border-slate-200/80 dark:border-slate-700/80 hover:border-blue-300 dark:hover:border-blue-500 hover:shadow-md'
                   }`}
                 >
                   <div>
@@ -107,8 +107,8 @@ export const ProcessSection: React.FC = () => {
                     <div
                       className={`w-12 h-12 rounded-full flex items-center justify-center font-black text-base mx-auto mb-3 border-2 shadow-sm transition-all duration-300 ${
                         isSelected
-                          ? 'bg-gradient-to-br from-blue-600 to-indigo-600 text-white border-blue-200 scale-110'
-                          : 'bg-slate-100 text-slate-700 border-white group-hover:bg-blue-600 group-hover:text-white'
+                          ? 'bg-gradient-to-br from-blue-600 to-indigo-600 text-white border-blue-200 dark:border-blue-400 scale-110'
+                          : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 border-white dark:border-slate-600 group-hover:bg-blue-600 group-hover:text-white'
                       }`}
                     >
                       {isLast ? <i className="fa-solid fa-infinity text-sm"></i> : item.step}
@@ -117,22 +117,22 @@ export const ProcessSection: React.FC = () => {
                     {/* Step Title */}
                     <h3
                       className={`font-extrabold text-sm mb-1.5 transition-colors ${
-                        isSelected ? 'text-blue-700' : 'text-slate-900 group-hover:text-blue-600'
+                        isSelected ? 'text-blue-700 dark:text-blue-400' : 'text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400'
                       }`}
                     >
                       {item.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-slate-500 text-[11px] leading-relaxed hidden sm:block">
+                    <p className="text-slate-500 dark:text-slate-400 text-[11px] leading-relaxed hidden sm:block">
                       {item.description}
                     </p>
                   </div>
 
-                  <div className="mt-3 pt-2 border-t border-slate-100 flex items-center justify-center">
+                  <div className="mt-3 pt-2 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-center">
                     <span
                       className={`text-[10px] uppercase font-bold ${
-                        isSelected ? 'text-blue-600' : 'text-slate-400'
+                        isSelected ? 'text-blue-600 dark:text-blue-400' : 'text-slate-400 dark:text-slate-500'
                       }`}
                     >
                       {isSelected ? 'Active Phase' : `Phase 0${idx + 1}`}

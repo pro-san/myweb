@@ -16,15 +16,13 @@ export const Footer: React.FC = () => {
         {/* Social Icons */}
         <div className="flex items-center justify-center gap-4 mb-8">
           <a
-            href={`https://wa.me/${PERSONAL_INFO.whatsappRaw}?text=${encodeURIComponent(
-              PERSONAL_INFO.whatsappMessage
-            )}`}
+            href={PERSONAL_INFO.telegramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-10 h-10 rounded-full bg-slate-900 hover:bg-[#25D366] text-white flex items-center justify-center text-lg transition-all duration-200 hover:-translate-y-1 shadow-sm"
-            aria-label="WhatsApp"
+            className="w-10 h-10 rounded-full bg-slate-900 hover:bg-[#24A1DE] text-white flex items-center justify-center text-lg transition-all duration-200 hover:-translate-y-1 shadow-sm"
+            aria-label="Telegram Chat"
           >
-            <i className="fa-brands fa-whatsapp"></i>
+            <i className="fa-brands fa-telegram"></i>
           </a>
           <a
             href={PERSONAL_INFO.githubUrl}
@@ -63,6 +61,9 @@ export const Footer: React.FC = () => {
           </a>
           <a href="#about" className="hover:text-white transition-colors">
             About Me
+          </a>
+          <a href="#faq" className="hover:text-white transition-colors">
+            FAQ
           </a>
           <a href="#contact" className="hover:text-white transition-colors">
             Contact

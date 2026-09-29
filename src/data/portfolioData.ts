@@ -1,10 +1,12 @@
-import { ProjectItem, ServiceItem, SkillCategory, TestimonialItem } from '../types';
+import { ProjectItem, ServiceItem, SkillCategory, TestimonialItem, FaqItem } from '../types';
 
 export const PERSONAL_INFO = {
   name: 'PRO DIGITAL',
   title: 'Full-Stack Web Developer & Automation Systems Engineer',
   brandName: 'FBMPrime',
   experienceYears: '3+',
+  telegramHandle: '@FBMprime',
+  telegramUrl: 'https://t.me/FBMprime',
   whatsappNumber: '+92 324 1703901',
   whatsappRaw: '923241703901',
   whatsappMessage: 'Hi PRO DIGITAL! I saw your portfolio and want to hire you for a project.',
@@ -298,3 +300,127 @@ export const TESTIMONIALS: TestimonialItem[] = [
     rating: 5
   }
 ];
+
+export const FAQ_ITEMS: FaqItem[] = [
+  {
+    id: 'process-workflow',
+    category: 'process',
+    question: 'What does your end-to-end development process look like?',
+    answer:
+      'We operate with an agile 6-phase engineering lifecycle: 1) Initial discovery and technical requirements scoping, 2) Architecture blueprinting and data schema design, 3) Iterative milestone development with live preview deployments, 4) Rigorous QA unit/integration testing and zero-crash stress testing, 5) Production rollout with DNS & cloud deployment, and 6) 30-day post-launch warranty with ongoing support.',
+    highlights: [
+      'Continuous Git commits & live staging links',
+      'Direct asynchronous communication via Telegram/Slack',
+      'Comprehensive architecture blueprints & documentation',
+    ],
+  },
+  {
+    id: 'process-ip-ownership',
+    category: 'process',
+    question: 'Do I get 100% full ownership of the source code and IP?',
+    answer:
+      'Yes, absolutely. Upon completion and approval of the final project milestone, 100% of all intellectual property, private GitHub repositories, Docker compose scripts, CI/CD pipelines, and configuration keys are formally transferred to you. There is zero vendor lock-in and no recurring proprietary license fees.',
+    highlights: [
+      '100% legal intellectual property assignment',
+      'Clean, documented Git history & repository transfer',
+      'Zero vendor lock-in or proprietary dependencies',
+    ],
+  },
+  {
+    id: 'process-updates',
+    category: 'process',
+    question: 'How frequently will I receive progress updates during development?',
+    answer:
+      'You are never left in the dark. We provide regular progress summaries via Telegram or Slack, live preview links updated continuously on every Git commit, and asynchronous video walk-throughs demonstrating each newly implemented feature before moving forward.',
+    highlights: [
+      'Daily/bi-daily status checkpoints via Telegram',
+      'Live staging environment updated on every commit',
+      'Interactive video walkthroughs for feature validation',
+    ],
+  },
+  {
+    id: 'process-tech-stack',
+    category: 'process',
+    question: 'What technologies and frameworks do you build with?',
+    answer:
+      'We tailor our technology choice to the exact performance demands of your application. For modern web: React 18/19, Next.js, TypeScript, and Tailwind CSS. For backend & microservices: Node.js, Python (FastAPI/Flask), Go, and SQLite WAL/PostgreSQL. For scraping & automation: Puppeteer, Playwright, Selenium, anti-detect proxy networks, and Redis queue workers.',
+    highlights: [
+      'Modern TypeScript & React/Next.js frontend',
+      'High-throughput Python & Node.js backend systems',
+      'Containerized Docker & cloud-native deployments',
+    ],
+  },
+  {
+    id: 'pricing-structure',
+    category: 'pricing',
+    question: 'How are project quotes calculated, and what are your payment terms?',
+    answer:
+      'We provide transparent fixed-price milestone billing based on technical scope, architecture complexity, and estimated engineering hours. Standard contracts are split into milestone gates (typically 30% upfront deposit to initiate discovery/architecture, 40% upon working staging demo, and 30% on final production delivery).',
+    highlights: [
+      'Transparent itemized fixed-price quotes',
+      'Milestone-based payment gates tied to real deliverables',
+      'Zero surprise invoices or unapproved billable hours',
+    ],
+  },
+  {
+    id: 'pricing-payment-methods',
+    category: 'pricing',
+    question: 'What payment methods do you accept from international clients?',
+    answer:
+      'We partner with clients globally across North America, Europe, the UK, Australia, and Asia. We support direct Bank Wire (via Wise / Swift), Payoneer, Upwork/Freelance escrow contracts, and major Cryptocurrencies (USDT, USDC, BTC) for fast, low-fee cross-border settlements.',
+    highlights: [
+      'Wise & International Wire Transfer',
+      'Escrow protection options available',
+      'USDT / USDC / Crypto supported for instant settlement',
+    ],
+  },
+  {
+    id: 'pricing-scope-changes',
+    category: 'pricing',
+    question: 'What happens if I need changes or extra features mid-project?',
+    answer:
+      'Requirements can evolve as you test working prototypes. When you need extra features, we supply a clear modular add-on scope with the exact timeline and cost adjustment before writing any code. Your core budget and milestone dates remain predictable and protected.',
+    highlights: [
+      'Modular scope change quotes before implementation',
+      'No surprise budget inflation',
+      'Guaranteed preservation of core release schedule',
+    ],
+  },
+  {
+    id: 'timeline-standard-delivery',
+    category: 'timeline',
+    question: 'How long does a typical software project take to deliver?',
+    answer:
+      'Timelines correspond directly to system scope: Landing pages and simple MVPs typically take 3 to 7 business days; full-stack web applications, portals, and SaaS platforms take 2 to 4 weeks; desktop and offline systems take 2 to 3 weeks; while custom browser automation bots and scraping pipelines take 1 to 2 weeks.',
+    highlights: [
+      'MVPs & Landing Pages: 3–7 business days',
+      'Full-Stack Web Apps: 2–4 weeks',
+      'Automation Bots & Scrapers: 1–2 weeks',
+    ],
+  },
+  {
+    id: 'timeline-rush-sprints',
+    category: 'timeline',
+    question: 'Can you handle urgent deadlines or emergency rush sprints?',
+    answer:
+      'Yes. For time-critical product launches, high-stakes investor demos, or urgent bug remediations, we provide expedited rush sprints (delivering working MVPs or automated bots within 48 to 72 hours) with focused, dedicated engineering bandwidth.',
+    highlights: [
+      'Expedited 48–72 hour rush sprints available',
+      'Dedicated engineering priority allocation',
+      'Rapid turnaround without sacrificing code quality',
+    ],
+  },
+  {
+    id: 'timeline-post-launch-warranty',
+    category: 'timeline',
+    question: 'What kind of warranty and post-launch support do you provide?',
+    answer:
+      'Every delivered project includes an unconditional 30-day post-launch warranty covering any bug fixes, configuration adjustments, and server deployment troubleshooting at no additional cost. We also provide ongoing monthly SLA maintenance agreements for continuous enhancement and server management.',
+    highlights: [
+      'Complimentary 30-day bug warranty on all code',
+      'Assisted production server & DNS deployment',
+      'Optional monthly SLA maintenance packages',
+    ],
+  },
+];
+

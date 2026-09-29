@@ -1,9 +1,39 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --color-bg-base: #f8fafc;
+  --color-bg-surface: #ffffff;
+  --color-bg-subtle: #f1f5f9;
+  --color-text-main: #0f172a;
+  --color-text-muted: #64748b;
+  --color-border: #e2e8f0;
+  --color-border-subtle: #f1f5f9;
+  --color-card: #ffffff;
+  --color-navbar: rgba(255, 255, 255, 0.95);
+  color-scheme: light;
+}
+
+.dark, [data-theme="dark"] {
+  --color-bg-base: #0b0f19;
+  --color-bg-surface: #111827;
+  --color-bg-subtle: #1f2937;
+  --color-text-main: #f8fafc;
+  --color-text-muted: #94a3b8;
+  --color-border: #1e293b;
+  --color-border-subtle: #334155;
+  --color-card: #111827;
+  --color-navbar: rgba(11, 15, 25, 0.95);
+  color-scheme: dark;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--color-bg-base);
+    color: var(--color-text-main);
   }
 }
 
