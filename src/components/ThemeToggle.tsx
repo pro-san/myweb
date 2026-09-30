@@ -2,11 +2,13 @@ import React from 'react';
 import { useTheme } from '../context/ThemeContext';
 
 interface ThemeToggleProps {
+  id?: string;
   className?: string;
   showLabel?: boolean;
 }
 
 export const ThemeToggle: React.FC<ThemeToggleProps> = ({
+  id = 'theme-toggle',
   className = '',
   showLabel = false,
 }) => {
@@ -14,6 +16,9 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({
 
   return (
     <button
+      id={id}
+      data-testid="theme-toggle"
+      data-theme={theme}
       type="button"
       onClick={toggleTheme}
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}

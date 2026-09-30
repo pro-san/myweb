@@ -1,7 +1,11 @@
 import React from 'react';
 import { PERSONAL_INFO } from '../data/portfolioData';
+import { useLanguage } from '../context/LanguageContext';
 
 export const Footer: React.FC = () => {
+  const { t, language } = useLanguage();
+  const isKhmer = language === 'km';
+
   return (
     <footer className="bg-slate-950 text-slate-400 py-14 border-t border-slate-900">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
@@ -10,7 +14,7 @@ export const Footer: React.FC = () => {
           {PERSONAL_INFO.name}
         </h4>
         <p className="text-xs sm:text-sm text-slate-400 max-w-md mx-auto mb-6">
-          {PERSONAL_INFO.title}
+          {isKhmer ? 'វិស្វករអភិវឌ្ឍន៍វេបសាយ Full-Stack & ប្រព័ន្ធស្វ័យប្រវត្តិកម្ម' : PERSONAL_INFO.title}
         </p>
 
         {/* Social Icons */}
@@ -43,36 +47,42 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Quick Nav Links */}
-        <div className="flex flex-wrap items-center justify-center gap-6 text-xs font-semibold text-slate-500 mb-8 border-y border-slate-900 py-4 max-w-2xl mx-auto">
+        <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs font-semibold text-slate-400 mb-8 border-y border-slate-900 py-4 max-w-4xl mx-auto">
           <a href="#services" className="hover:text-white transition-colors">
-            Services
+            {t('nav_services')}
           </a>
           <a href="#projects" className="hover:text-white transition-colors">
-            Projects
+            {t('nav_projects')}
           </a>
           <a href="#code-lab" className="hover:text-white transition-colors text-blue-400">
-            Code Lab
+            {t('nav_code_lab')}
+          </a>
+          <a href="#roi-calculator" className="hover:text-white transition-colors text-emerald-400">
+            {t('nav_roi')}
+          </a>
+          <a href="#client-portal" className="hover:text-white transition-colors text-indigo-400">
+            {t('nav_portal')}
           </a>
           <a href="#skills" className="hover:text-white transition-colors">
-            Skills
+            {t('nav_skills')}
           </a>
           <a href="#process" className="hover:text-white transition-colors">
-            Process
+            {t('nav_process')}
           </a>
           <a href="#about" className="hover:text-white transition-colors">
-            About Me
+            {t('nav_about')}
           </a>
           <a href="#faq" className="hover:text-white transition-colors">
-            FAQ
+            {t('nav_faq')}
           </a>
           <a href="#contact" className="hover:text-white transition-colors">
-            Contact
+            {t('nav_contact')}
           </a>
         </div>
 
         {/* Copyright notice */}
         <p className="text-xs text-slate-500 m-0 leading-relaxed">
-          &copy; 2026 <strong className="text-slate-300 font-bold">PRO DIGITAL</strong>. Built with precision &amp; clean code. All Rights Reserved.
+          &copy; 2026 <strong className="text-slate-300 font-bold">PRO DIGITAL</strong>. {isKhmer ? 'កសាងឡើងដោយភាពជាក់លាក់ និងកូដស្អាត។ រក្សាសិទ្ធិគ្រប់យ៉ាង។' : 'Built with precision & clean code. All Rights Reserved.'}
         </p>
       </div>
     </footer>

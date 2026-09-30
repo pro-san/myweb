@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { SKILL_CATEGORIES } from '../data/portfolioData';
+import { useLanguage } from '../context/LanguageContext';
 
 export const SkillsSection: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const { language } = useLanguage();
+  const isKhmer = language === 'km';
 
   return (
     <section id="skills" className="py-20 bg-white dark:bg-slate-900/60 border-t border-b border-slate-200 dark:border-slate-800 relative transition-colors duration-200">
@@ -10,14 +13,16 @@ export const SkillsSection: React.FC = () => {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
           <span className="inline-block text-xs uppercase tracking-wider font-extrabold text-emerald-700 dark:text-emerald-400 bg-emerald-100/80 dark:bg-emerald-950/80 border border-emerald-300 dark:border-emerald-800 rounded-full px-4 py-1 mb-3">
-            TECHNICAL PROFICIENCY
+            {isKhmer ? 'ជំនាញបច្ចេកវិទ្យា' : 'TECHNICAL PROFICIENCY'}
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight mb-4">
-            Technical Skills &amp; Tech Stack
+            {isKhmer ? 'ជំនាញបច្ចេកទេស & បច្ចេកវិទ្យាដែលប្រើប្រាស់' : 'Technical Skills & Tech Stack'}
           </h2>
           <div className="h-1 w-16 bg-gradient-to-r from-emerald-500 to-teal-600 rounded mx-auto mb-4"></div>
           <p className="text-slate-600 dark:text-slate-400 text-base sm:text-lg">
-            Languages, frameworks, offline database engines, and automation tools I leverage to build production-grade applications.
+            {isKhmer
+              ? 'ភាសាសរសេរកូដ Frameworks មូលដ្ឋានទិន្នន័យក្រៅបណ្តាញ និងឧបករណ៍ស្វ័យប្រវត្តិកម្មដែលខ្ញុំប្រើប្រាស់ដើម្បីកសាងកម្មវិធីកម្រិតផលិតកម្ម។'
+              : 'Languages, frameworks, offline database engines, and automation tools I leverage to build production-grade applications.'}
           </p>
 
           {/* Quick Search */}
@@ -25,7 +30,7 @@ export const SkillsSection: React.FC = () => {
             <i className="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 text-sm"></i>
             <input
               type="text"
-              placeholder="Search technologies (e.g. SQLite, Python, React)..."
+              placeholder={isKhmer ? 'ស្វែងរកបច្ចេកវិទ្យា (ឧ. SQLite, Python, React)...' : 'Search technologies (e.g. SQLite, Python, React)...'}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full pl-10 pr-4 py-2 text-xs sm:text-sm bg-slate-50 dark:bg-slate-800/90 text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 border border-slate-200 dark:border-slate-700 rounded-full focus:outline-none focus:border-blue-500 focus:bg-white dark:focus:bg-slate-800 transition-all shadow-2xs"
@@ -84,9 +89,9 @@ export const SkillsSection: React.FC = () => {
                 </div>
 
                 <div className="mt-5 pt-3 border-t border-slate-100 dark:border-slate-800 text-[11px] font-semibold text-slate-600 dark:text-slate-400 flex items-center justify-between">
-                  <span>{filteredSkills.length} Technologies</span>
+                  <span>{filteredSkills.length} {isKhmer ? 'បច្ចេកវិទ្យា' : 'Technologies'}</span>
                   <span className="text-emerald-700 dark:text-emerald-400 font-bold flex items-center gap-1">
-                    <i className="fa-solid fa-circle-check text-xs"></i> Production Ready
+                    <i className="fa-solid fa-circle-check text-xs"></i> {isKhmer ? 'ត្រៀមប្រើប្រាស់ជាក់ស្តែង' : 'Production Ready'}
                   </span>
                 </div>
               </div>

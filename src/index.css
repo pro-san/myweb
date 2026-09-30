@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:where(.dark, [data-theme="dark"], .dark *, [data-theme="dark"] *));
 
-:root {
+:root, [data-theme="light"] {
   --color-bg-base: #f8fafc;
   --color-bg-surface: #ffffff;
   --color-bg-subtle: #f1f5f9;

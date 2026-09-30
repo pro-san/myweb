@@ -1,21 +1,27 @@
 import React from 'react';
 import { TESTIMONIALS } from '../data/portfolioData';
+import { useLanguage } from '../context/LanguageContext';
 
 export const TestimonialsSection: React.FC = () => {
+  const { language } = useLanguage();
+  const isKhmer = language === 'km';
+
   return (
     <section className="py-20 bg-slate-50 dark:bg-slate-950 relative transition-colors duration-200">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
           <span className="inline-block text-xs uppercase tracking-wider font-extrabold text-amber-700 dark:text-amber-400 bg-amber-100/80 dark:bg-amber-950/80 border border-amber-300 dark:border-amber-800 rounded-full px-4 py-1 mb-3">
-            CLIENT TESTIMONIALS
+            {isKhmer ? 'មតិពីអតិថិជន' : 'CLIENT TESTIMONIALS'}
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight mb-4">
-            Client Reviews &amp; Real-World Impact
+            {isKhmer ? 'ការវាយតម្លៃរបស់អតិថិជន & ប្រសិទ្ធភាពជាក់ស្តែង' : 'Client Reviews & Real-World Impact'}
           </h2>
           <div className="h-1 w-16 bg-gradient-to-r from-amber-500 to-yellow-500 rounded mx-auto mb-4"></div>
           <p className="text-slate-600 dark:text-slate-400 text-base sm:text-lg">
-            Direct feedback from commercial business owners and agency directors operating my custom software solutions daily.
+            {isKhmer
+              ? 'មតិផ្ទាល់ពីម្ចាស់អាជីវកម្ម និងនាយកប្រតិបត្តិដែលកំពុងដំណើរការសូហ្វវែររបស់ខ្ញុំជារៀងរាល់ថ្ងៃ។'
+              : 'Direct feedback from commercial business owners and agency directors operating my custom software solutions daily.'}
           </p>
         </div>
 
@@ -55,7 +61,7 @@ export const TestimonialsSection: React.FC = () => {
                     {test.author}
                   </h4>
                   <p className="text-slate-500 dark:text-slate-400 text-xs font-medium">
-                    {test.project} • <span className="text-emerald-600 dark:text-emerald-400 font-semibold">Verified Client</span>
+                    {test.project} • <span className="text-emerald-600 dark:text-emerald-400 font-semibold">{isKhmer ? 'អតិថិជនពិតប្រាកដ' : 'Verified Client'}</span>
                   </p>
                 </div>
               </div>

@@ -1,6 +1,10 @@
 import React from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 export const QualitySection: React.FC = () => {
+  const { language } = useLanguage();
+  const isKhmer = language === 'km';
+
   return (
     <section className="py-20 bg-slate-900 text-white border-t border-b border-slate-800 relative overflow-hidden">
       {/* Dark grid background pattern */}
@@ -11,14 +15,16 @@ export const QualitySection: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider font-extrabold text-amber-300 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-1 mb-3">
             <i className="fa-solid fa-shield-halved"></i>
-            <span>Zero Crash Guarantee</span>
+            <span>{isKhmer ? 'ការធានាអត្រាក្រាំង ០% (Zero Crash)' : 'Zero Crash Guarantee'}</span>
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">
-            Code Quality & Strict QA Testing
+            {isKhmer ? 'គុណភាពកូដ និងការតេស្ត QA យ៉ាងហ្មត់ចត់' : 'Code Quality & Strict QA Testing'}
           </h2>
           <div className="h-1 w-16 bg-gradient-to-r from-amber-400 to-emerald-400 rounded mx-auto mb-4"></div>
           <p className="text-slate-400 text-base sm:text-lg">
-            I don't just write code; I engineer reliable, resilient systems. Every project undergoes rigorous end-to-end stress testing prior to deployment.
+            {isKhmer
+              ? 'ខ្ញុំមិនគ្រាន់តែសរសេរកូដនោះទេ ខ្ញុំបង្កើតប្រព័ន្ធដែលមានស្ថិរភាពខ្ពស់ និងរឹងមាំបំផុត។ គ្រប់គម្រោងសុទ្ធតែឆ្លងកាត់ការធ្វើតេស្តសាកល្បងសម្ពាធមុនពេលដាក់ឱ្យដំណើរការ។'
+              : "I don't just write code; I engineer reliable, resilient systems. Every project undergoes rigorous end-to-end stress testing prior to deployment."}
           </p>
         </div>
 
@@ -31,14 +37,16 @@ export const QualitySection: React.FC = () => {
                 <i className="fa-solid fa-bug-slash"></i>
               </div>
               <h3 className="text-lg font-bold text-white mb-3">
-                Automated Testing
+                {isKhmer ? 'ការតេស្តស្វ័យប្រវត្តិ' : 'Automated Testing'}
               </h3>
               <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
-                Using Selenium, Playwright, and Postman API testing to simulate thousands of concurrent user interactions and preemptively catch edge cases.
+                {isKhmer
+                  ? 'ការប្រើប្រាស់ Selenium, Playwright និង Postman API testing ដើម្បីក្លែងធ្វើការប្រើប្រាស់របស់មនុស្សរាប់ពាន់នាក់ក្នុងពេលតែមួយ និងទប់ស្កាត់បញ្ហាជាមុន។'
+                  : 'Using Selenium, Playwright, and Postman API testing to simulate thousands of concurrent user interactions and preemptively catch edge cases.'}
               </p>
             </div>
             <div className="mt-6 pt-3 border-t border-slate-700/50 text-[11px] font-mono text-emerald-400">
-              Coverage: Unit, Integration & E2E
+              {isKhmer ? 'ការតេស្ត៖ Unit, Integration & E2E' : 'Coverage: Unit, Integration & E2E'}
             </div>
           </div>
 
@@ -49,14 +57,16 @@ export const QualitySection: React.FC = () => {
                 <i className="fa-solid fa-shield-halved"></i>
               </div>
               <h3 className="text-lg font-bold text-white mb-3">
-                Security & Protection
+                {isKhmer ? 'សុវត្ថិភាព និងការការពារ' : 'Security & Protection'}
               </h3>
               <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
-                Built-in protection against SQL injection, XSS vulnerabilities, strict API rate-limiting, and deep browser fingerprint obfuscation for web scrapers.
+                {isKhmer
+                  ? 'ការពារជាស្រេចពីការវាយប្រហារ SQL injection, XSS vulnerabilities, ការកំណត់កម្រិតហៅ API តឹងរ៉ឹង និងការក្លែងបន្លំ Browser Fingerprint យ៉ាងជ្រៅ។'
+                  : 'Built-in protection against SQL injection, XSS vulnerabilities, strict API rate-limiting, and deep browser fingerprint obfuscation for web scrapers.'}
               </p>
             </div>
             <div className="mt-6 pt-3 border-t border-slate-700/50 text-[11px] font-mono text-sky-400">
-              Sanitized Inputs & Token Guards
+              {isKhmer ? 'សុវត្ថិភាព៖ Sanitized Inputs & Token Guards' : 'Sanitized Inputs & Token Guards'}
             </div>
           </div>
 
@@ -67,14 +77,16 @@ export const QualitySection: React.FC = () => {
                 <i className="fa-solid fa-server"></i>
               </div>
               <h3 className="text-lg font-bold text-white mb-3">
-                Performance Profiling
+                {isKhmer ? 'ការវាស់ស្ទង់ល្បឿន និងប្រសិទ្ធភាព' : 'Performance Profiling'}
               </h3>
               <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
-                Database query optimization with SQLite WAL concurrency and memory leak audits to guarantee 0% crash rates under heavy commercial data traffic.
+                {isKhmer
+                  ? 'ការបង្កើនប្រសិទ្ធភាព Database ជាមួយ SQLite WAL Concurrency និងការត្រួតពិនិត្យ Memory Leak ដើម្បីធានាអត្រាក្រាំង ០% ទោះបីផ្ទុកទិន្នន័យច្រើនក៏ដោយ។'
+                  : 'Database query optimization with SQLite WAL concurrency and memory leak audits to guarantee 0% crash rates under heavy commercial data traffic.'}
               </p>
             </div>
             <div className="mt-6 pt-3 border-t border-slate-700/50 text-[11px] font-mono text-amber-400">
-              Benchmark: &lt;20ms Queries & 0% Crashes
+              {isKhmer ? 'កម្រិតស្តង់ដារ៖ Query <20ms & ក្រាំង 0%' : 'Benchmark: <20ms Queries & 0% Crashes'}
             </div>
           </div>
         </div>

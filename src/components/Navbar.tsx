@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { ThemeToggle } from './ThemeToggle';
+import { LanguageToggle } from './LanguageToggle';
+import { useLanguage } from '../context/LanguageContext';
 
 interface NavbarProps {
   onOpenEstimator?: () => void;
+  onOpenResume?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenEstimator }) => {
+export const Navbar: React.FC<NavbarProps> = ({ onOpenEstimator, onOpenResume }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { t, language } = useLanguage();
+  const isKhmer = language === 'km';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,22 +24,24 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEstimator }) => {
   }, []);
 
   const navLinks = [
-    { label: 'Services', href: '#services' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Code Lab', href: '#code-lab' },
-    { label: 'Skills', href: '#skills' },
-    { label: 'Process', href: '#process' },
-    { label: 'About Me', href: '#about' },
-    { label: 'FAQ', href: '#faq' },
-    { label: 'Contact', href: '#contact' },
+    { label: t('nav_services'), href: '#services' },
+    { label: t('nav_projects'), href: '#projects' },
+    { label: t('nav_code_lab'), href: '#code-lab' },
+    { label: t('nav_roi'), href: '#roi-calculator' },
+    { label: t('nav_portal'), href: '#client-portal' },
+    { label: t('nav_skills'), href: '#skills' },
+    { label: t('nav_process'), href: '#process' },
+    { label: t('nav_about'), href: '#about' },
+    { label: t('nav_faq'), href: '#faq' },
+    { label: t('nav_contact'), href: '#contact' },
   ];
 
   return (
     <nav
       className={`sticky top-0 z-50 transition-all duration-300 border-b ${
         isScrolled
-          ? 'bg-white/95 dark:bg-slate-900/90 backdrop-blur-md shadow-md border-slate-200/80 dark:border-slate-800 py-3'
-          : 'bg-white/90 dark:bg-slate-950/90 backdrop-blur-sm shadow-xs border-transparent dark:border-slate-800/60 py-4'
+          ? 'bg-white/95 dark:bg-slate-900/90 backdrop-blur-md shadow-md border-slate-200/80 dark:border-slate-800 py-2.5'
+          : 'bg-white/90 dark:bg-slate-950/90 backdrop-blur-sm shadow-xs border-transparent dark:border-slate-800/60 py-3.5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -47,16 +54,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEstimator }) => {
             <span className="font-extrabold text-slate-900 dark:text-slate-100 text-lg tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
               PRO DIGITAL
             </span>
-            <span className="hidden md:inline-flex items-center text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-800 dark:bg-blue-950/80 dark:text-blue-300 ml-1.5 border border-blue-200 dark:border-blue-800">
-              Full-Stack Dev &amp; Automation
+            <span className="hidden xl:inline-flex items-center text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-800 dark:bg-blue-950/80 dark:text-blue-300 ml-1.5 border border-blue-200 dark:border-blue-800">
+              {t('hero_subtitle_tag')}
             </span>
           </a>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-5">
-            <ul className="flex items-center gap-5 text-sm font-semibold text-slate-700 dark:text-slate-300">
+          <div className="hidden lg:flex items-center gap-4">
+            <ul className="flex items-center gap-3.5 text-xs xl:text-sm font-semibold text-slate-700 dark:text-slate-300">
               {navLinks.map((link) => (
-                <li key={link.label}>
+                <li key={link.href}>
                   <a
                     href={link.href}
                     className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-blue-600 dark:after:bg-blue-400 hover:after:w-full after:transition-all after:duration-200"
@@ -69,49 +76,46 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEstimator }) => {
                 <li>
                   <button
                     onClick={onOpenEstimator}
-                    className="text-amber-600 dark:text-amber-400 hover:text-amber-700 dark:hover:text-amber-300 flex items-center gap-1.5 cursor-pointer font-bold transition-colors"
+                    className="text-amber-600 dark:text-amber-400 hover:text-amber-700 dark:hover:text-amber-300 flex items-center gap-1 cursor-pointer font-bold transition-colors text-xs xl:text-sm"
                   >
                     <i className="fa-solid fa-calculator text-amber-500"></i>
-                    <span>Estimator</span>
+                    <span>{t('nav_estimator')}</span>
                   </button>
                 </li>
               )}
             </ul>
 
-            {/* Dark Mode Toggle Button */}
-            <ThemeToggle />
+            {/* Factsheet / Resume trigger */}
+            {onOpenResume && (
+              <button
+                onClick={onOpenResume}
+                className="hidden xl:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-blue-400 dark:hover:border-blue-500 text-slate-700 dark:text-slate-200 hover:text-blue-600 text-xs font-bold transition-colors cursor-pointer"
+                title="View Developer Credentials & CV"
+              >
+                <i className="fa-solid fa-file-invoice text-blue-500"></i>
+                <span>{t('nav_cv')}</span>
+              </button>
+            )}
 
-            {/* Telegram Chat CTA Button */}
-            <a
-              href={PERSONAL_INFO.telegramUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#24A1DE] hover:bg-[#1e88be] text-white font-bold text-sm px-5 py-2.5 rounded-full shadow-md hover:shadow-lg shadow-sky-500/20 transition-all duration-300 hover:-translate-y-0.5"
-            >
-              <i className="fa-brands fa-telegram text-base"></i>
-              <span>Telegram Chat</span>
-            </a>
+            {/* Language Switcher (EN / ខ្មែរ) */}
+            <LanguageToggle />
+
+            {/* Dark Mode Toggle Button */}
+            <ThemeToggle id="theme-toggle" />
           </div>
 
           {/* Mobile Right Controls */}
-          <div className="flex lg:hidden items-center gap-2 sm:gap-3">
-            {/* Theme Toggle (Mobile) */}
-            <ThemeToggle />
+          <div className="flex lg:hidden items-center gap-1.5 sm:gap-2">
+            {/* Language Switcher (Mobile) */}
+            <LanguageToggle />
 
-            <a
-              href={PERSONAL_INFO.telegramUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 bg-[#24A1DE] hover:bg-[#1e88be] text-white font-bold text-xs px-3 py-1.5 rounded-full shadow transition-all duration-200"
-            >
-              <i className="fa-brands fa-telegram"></i>
-              <span className="hidden sm:inline">Telegram Chat</span>
-            </a>
+            {/* Theme Toggle (Mobile) */}
+            <ThemeToggle id="mobile-theme-toggle" />
 
             {/* Mobile Menu Toggle Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-none"
+              className="p-2 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-none cursor-pointer"
               aria-label="Toggle navigation"
             >
               <i
@@ -126,10 +130,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEstimator }) => {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 px-4 pt-3 pb-6 mt-3 shadow-xl animate-in slide-in-from-top-2 duration-200">
-          <ul className="flex flex-col gap-2.5 font-semibold text-slate-800 dark:text-slate-200">
+        <div className="lg:hidden bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 px-4 pt-3 pb-6 mt-3 shadow-xl animate-in slide-in-from-top-2 duration-200 max-h-[85vh] overflow-y-auto">
+          <ul className="flex flex-col gap-2 font-semibold text-slate-800 dark:text-slate-200">
             {navLinks.map((link) => (
-              <li key={link.label}>
+              <li key={link.href}>
                 <a
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
@@ -146,16 +150,30 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEstimator }) => {
                     setMobileMenuOpen(false);
                     onOpenEstimator();
                   }}
-                  className="w-full text-left py-2 px-3 rounded-lg bg-amber-50 dark:bg-amber-950/40 text-amber-800 dark:text-amber-300 font-bold flex items-center gap-2 border border-amber-200/60 dark:border-amber-800/40"
+                  className="w-full text-left py-2 px-3 rounded-lg bg-amber-50 dark:bg-amber-950/40 text-amber-800 dark:text-amber-300 font-bold flex items-center gap-2 border border-amber-200/60 dark:border-amber-800/40 cursor-pointer"
                 >
                   <i className="fa-solid fa-calculator text-amber-500"></i>
-                  <span>Instant Project Cost Estimator</span>
+                  <span>{isKhmer ? 'ឧបករណ៍គណនាថ្លៃគម្រោងភ្លាមៗ' : 'Instant Project Cost Estimator'}</span>
+                </button>
+              </li>
+            )}
+            {onOpenResume && (
+              <li>
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onOpenResume();
+                  }}
+                  className="w-full text-left py-2 px-3 rounded-lg bg-blue-50 dark:bg-blue-950/40 text-blue-800 dark:text-blue-300 font-bold flex items-center gap-2 border border-blue-200/60 dark:border-blue-800/40 cursor-pointer"
+                >
+                  <i className="fa-solid fa-file-invoice text-blue-500"></i>
+                  <span>{isKhmer ? 'មើលប្រវត្តិរូបសង្ខេប & ព័ត៌មានវិស្វករ' : 'Developer Executive Factsheet & CV'}</span>
                 </button>
               </li>
             )}
             <li className="pt-2 flex items-center justify-between gap-3 p-2 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60">
               <span className="text-xs font-semibold text-slate-600 dark:text-slate-300">
-                Appearance Theme
+                {t('nav_theme')}
               </span>
               <ThemeToggle showLabel />
             </li>
@@ -167,7 +185,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEstimator }) => {
                 className="w-full inline-flex items-center justify-center gap-2 bg-[#24A1DE] hover:bg-[#1e88be] text-white font-bold py-3 rounded-xl shadow transition-colors"
               >
                 <i className="fa-brands fa-telegram text-xl"></i>
-                <span>Direct Telegram Chat</span>
+                <span>{t('nav_telegram')}</span>
               </a>
             </li>
           </ul>
@@ -176,3 +194,4 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEstimator }) => {
     </nav>
   );
 };
+

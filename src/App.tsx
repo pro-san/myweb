@@ -6,7 +6,10 @@ import { StatsBanner } from './components/StatsBanner';
 import { ServicesSection } from './components/ServicesSection';
 import { ProjectsSection } from './components/ProjectsSection';
 import { CodeExecutionLab } from './components/CodeExecutionLab';
+import { ROICalculator } from './components/ROICalculator';
+import { ClientPortalDemo } from './components/ClientPortalDemo';
 import { ProjectEstimator } from './components/ProjectEstimator';
+import { ResumeModal } from './components/ResumeModal';
 import { SkillsSection } from './components/SkillsSection';
 import { ProcessSection } from './components/ProcessSection';
 import { QualitySection } from './components/QualitySection';
@@ -21,6 +24,7 @@ import { Toast } from './components/Toast';
 
 export default function App() {
   const [isEstimatorOpen, setIsEstimatorOpen] = useState(false);
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
   const [selectedServiceForContact, setSelectedServiceForContact] = useState<string>('');
   const [contactInitialMessage, setContactInitialMessage] = useState<string>('');
   const [showSuccessToast, setShowSuccessToast] = useState(false);
@@ -34,7 +38,7 @@ export default function App() {
   };
 
   const handleApplySpecToContact = (specSummary: string) => {
-    setContactInitialMessage(`Project Specification from Estimator:\n${specSummary}\n\nAdditional notes: `);
+    setContactInitialMessage(`Project Specification from Estimator / ROI:\n${specSummary}\n\nAdditional notes: `);
     const contactElem = document.getElementById('contact');
     if (contactElem) {
       contactElem.scrollIntoView({ behavior: 'smooth' });
@@ -47,10 +51,16 @@ export default function App() {
       <ScrollProgressBar />
 
       {/* Navigation */}
-      <Navbar onOpenEstimator={() => setIsEstimatorOpen(true)} />
+      <Navbar
+        onOpenEstimator={() => setIsEstimatorOpen(true)}
+        onOpenResume={() => setIsResumeOpen(true)}
+      />
 
       {/* Hero Section */}
-      <Hero onOpenEstimator={() => setIsEstimatorOpen(true)} />
+      <Hero
+        onOpenEstimator={() => setIsEstimatorOpen(true)}
+        onOpenResume={() => setIsResumeOpen(true)}
+      />
 
       {/* Floating Stats Banner */}
       <StatsBanner />
@@ -65,6 +75,15 @@ export default function App() {
 
         {/* Live Step-by-Step Code Execution Lab */}
         <CodeExecutionLab />
+
+        {/* Interactive Value & Automation ROI Calculator */}
+        <ROICalculator
+          onOpenEstimator={() => setIsEstimatorOpen(true)}
+          onSendSpecToContact={handleApplySpecToContact}
+        />
+
+        {/* Live Client Milestone & QA Tracker Demo */}
+        <ClientPortalDemo />
 
         {/* Skills & Tech Stack Section */}
         <SkillsSection />
@@ -97,6 +116,12 @@ export default function App() {
         isOpen={isEstimatorOpen}
         onClose={() => setIsEstimatorOpen(false)}
         onApplySpecToContact={handleApplySpecToContact}
+      />
+
+      {/* Developer Executive Factsheet & Technical CV Modal */}
+      <ResumeModal
+        isOpen={isResumeOpen}
+        onClose={() => setIsResumeOpen(false)}
       />
 
       {/* Footer */}
