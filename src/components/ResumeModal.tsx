@@ -65,7 +65,17 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                 Full-Stack Web Developer &amp; Automation Systems Engineer
               </div>
               <div className="text-xs text-slate-500 dark:text-slate-400 mt-2 flex flex-wrap gap-x-4 gap-y-1">
-                <span><i className="fa-solid fa-location-dot text-rose-500 mr-1"></i> Pakistan (Serving Global Clients)</span>
+                <a
+                  href={PERSONAL_INFO.locationMapUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-amber-500 dark:hover:text-amber-400 transition-colors inline-flex items-center gap-1 group"
+                  title="View Cambodia Office on Google Maps"
+                >
+                  <i className="fa-solid fa-location-dot text-rose-500"></i>
+                  <span>Cambodia (St2002, Phnom Penh, KH, 90115)</span>
+                  <i className="fa-solid fa-arrow-up-right-from-square text-[9px] text-slate-400 group-hover:text-amber-400"></i>
+                </a>
                 <span><i className="fa-solid fa-clock text-amber-500 mr-1"></i> 3+ Years Commercial Coding</span>
                 <span><i className="fa-solid fa-globe text-emerald-500 mr-1"></i> English / International</span>
               </div>

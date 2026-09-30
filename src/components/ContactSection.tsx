@@ -148,19 +148,31 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 </a>
 
                 {/* Location */}
-                <div className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10">
-                  <div className="w-12 h-12 rounded-xl bg-slate-700 text-amber-400 flex items-center justify-center text-xl shadow-md">
+                <a
+                  href={PERSONAL_INFO.locationMapUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-200 group"
+                  title="View on Google Maps"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-slate-700 group-hover:bg-amber-500 text-amber-400 group-hover:text-white flex items-center justify-center text-xl shadow-md transition-all group-hover:scale-110">
                     <i className="fa-solid fa-location-dot"></i>
                   </div>
-                  <div>
-                    <div className="text-xs uppercase font-extrabold text-amber-300 tracking-wider">
-                      Location
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between">
+                      <div className="text-xs uppercase font-extrabold text-amber-300 tracking-wider">
+                        Location
+                      </div>
+                      <span className="text-[11px] text-amber-400 font-bold group-hover:underline flex items-center gap-1">
+                        <span>View Map</span>
+                        <i className="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                      </span>
                     </div>
-                    <div className="text-sm font-semibold text-white">
+                    <div className="text-sm font-semibold text-white mt-0.5 leading-snug">
                       {PERSONAL_INFO.location}
                     </div>
                   </div>
-                </div>
+                </a>
               </div>
             </div>
 
@@ -318,6 +330,50 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 <i className="fa-brands fa-telegram text-base"></i> Chat on Telegram Instead
               </a>
             </div>
+          </div>
+        </div>
+
+        {/* Interactive Location & Google Map Card */}
+        <div className="mt-8 bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-200/80 dark:border-slate-800 overflow-hidden">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 flex items-center justify-center text-lg border border-amber-200/60 dark:border-amber-800/40">
+                <i className="fa-solid fa-map-location-dot"></i>
+              </div>
+              <div>
+                <h4 className="text-base sm:text-lg font-black text-slate-900 dark:text-slate-100">
+                  Location &amp; Office Coordinates
+                </h4>
+                <p className="text-xs text-slate-500 dark:text-slate-400">
+                  {PERSONAL_INFO.location}
+                </p>
+              </div>
+            </div>
+
+            <a
+              href={PERSONAL_INFO.locationMapUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs shadow-md hover:shadow-lg transition-all cursor-pointer group"
+            >
+              <i className="fa-solid fa-diamond-turn-right group-hover:rotate-12 transition-transform"></i>
+              <span>Open in Google Maps</span>
+              <i className="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+            </a>
+          </div>
+
+          {/* Embedded Google Map Frame */}
+          <div className="relative w-full h-64 sm:h-80 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-inner bg-slate-100 dark:bg-slate-800">
+            <iframe
+              title="Office Location Map - Phnom Penh, Cambodia"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              loading="lazy"
+              allowFullScreen
+              referrerPolicy="no-referrer-when-downgrade"
+              src="https://maps.google.com/maps?q=St+2002,+Phnom+Penh,+Cambodia&t=&z=16&ie=UTF8&iwloc=&output=embed"
+            />
           </div>
         </div>
       </div>

@@ -10,9 +10,10 @@ export const PERSONAL_INFO = {
   whatsappNumber: '+92 324 1703901',
   whatsappRaw: '923241703901',
   whatsappMessage: 'Hi PRO DIGITAL! I saw your portfolio and want to hire you for a project.',
-  email: 'fbmprime@gmail.com',
+  email: 'kimsan@dev.com',
   githubUrl: 'https://github.com/mrtechpk1-ai/FBMprime',
-  location: 'Pakistan (Serving Global Clients: US, CA, UK, Worldwide)',
+  location: 'Cambodia (St2002, Phnom Penh, KH, 90115)',
+  locationMapUrl: 'https://maps.app.goo.gl/gjZyiR7zwDgvrpKy5?g_st=ac',
   formspreeEndpoint: 'https://formspree.io/f/xqpkebro',
 };
 

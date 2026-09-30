@@ -36,11 +36,11 @@ export const AboutSection: React.FC = () => {
               <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed mb-4">
                 {isKhmer ? (
                   <>
-                    ខ្ញុំជាវិស្វករ <strong className="text-slate-900 dark:text-white font-bold">Full-Stack Web Developer</strong> និងជា <strong className="text-slate-900 dark:text-white font-bold">Automation Systems Architect</strong>។ តាំងពីឆ្នាំ 2023 មក ខ្ញុំបានកសាងកម្មវិធីវេបសាយល្បឿនលឿន ប្រព័ន្ធទិន្នន័យក្រៅបណ្តាញ និង Bot ស្វ័យប្រវត្តិកម្មសម្រាប់អាជីវកម្មនៅសហរដ្ឋអាមេរិក កាណាដា និងទូទាំងពិភពលោក។
+                    មានមូលដ្ឋាននៅរាជធានីភ្នំពេញ ប្រទេសកម្ពុជា ខ្ញុំជាវិស្វករ <strong className="text-slate-900 dark:text-white font-bold">Full-Stack Web Developer</strong> និងជា <strong className="text-slate-900 dark:text-white font-bold">Automation Systems Architect</strong>។ តាំងពីឆ្នាំ 2023 មក ខ្ញុំបានកសាងកម្មវិធីវេបសាយល្បឿនលឿន ប្រព័ន្ធទិន្នន័យក្រៅបណ្តាញ និង Bot ស្វ័យប្រវត្តិកម្មសម្រាប់អាជីវកម្មនៅសហរដ្ឋអាមេរិក កាណាដា និងទូទាំងពិភពលោក។
                   </>
                 ) : (
                   <>
-                    Based in Pakistan, I am a results-driven{' '}
+                    Based in Cambodia (St2002, Phnom Penh), I am a results-driven{' '}
                     <strong className="text-slate-900 dark:text-white font-bold">
                       Full-Stack Web Developer
                     </strong>{' '}
@@ -70,10 +70,17 @@ export const AboutSection: React.FC = () => {
 
               {/* Badges */}
               <div className="flex flex-wrap gap-2.5">
-                <span className="px-3.5 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 text-xs font-bold shadow-2xs flex items-center gap-2">
-                  <i className="fa-solid fa-location-dot text-rose-500"></i>
-                  <span>{isKhmer ? 'មូលដ្ឋាននៅប៉ាគីស្ថាន' : 'Pakistan Based'}</span>
-                </span>
+                <a
+                  href={PERSONAL_INFO.locationMapUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3.5 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-amber-400 dark:hover:border-amber-400 text-slate-800 dark:text-slate-200 hover:text-amber-600 dark:hover:text-amber-400 text-xs font-bold shadow-2xs flex items-center gap-2 transition-colors group"
+                  title="View Cambodia Office on Google Maps"
+                >
+                  <i className="fa-solid fa-location-dot text-rose-500 group-hover:scale-110 transition-transform"></i>
+                  <span>{isKhmer ? 'កម្ពុជា (ផ្លូវ 2002 ភ្នំពេញ)' : 'Cambodia (St2002, Phnom Penh)'}</span>
+                  <i className="fa-solid fa-arrow-up-right-from-square text-[9px] text-slate-400"></i>
+                </a>
                 <span className="px-3.5 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 text-xs font-bold shadow-2xs flex items-center gap-2">
                   <i className="fa-solid fa-globe text-blue-600 dark:text-blue-400"></i>
                   <span>{isKhmer ? 'អតិថិជនអន្តរជាតិ (US, CA, UK)' : 'Global Clients (US, CA, UK)'}</span>
