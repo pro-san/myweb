@@ -15,9 +15,15 @@ export const AboutSection: React.FC = () => {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <span className="inline-block text-xs uppercase tracking-wider font-extrabold text-blue-700 dark:text-blue-300 bg-blue-100/80 dark:bg-blue-950/80 border border-blue-300 dark:border-blue-800 rounded-full px-4 py-1 mb-3">
-            {isKhmer ? 'ប្រវត្តិ និងបទពិសោធន៍' : 'MY BACKGROUND'}
-          </span>
+          <div className="flex flex-wrap items-center justify-center gap-2 mb-3">
+            <span className="inline-block text-xs uppercase tracking-wider font-extrabold text-blue-700 dark:text-blue-300 bg-blue-100/80 dark:bg-blue-950/80 border border-blue-300 dark:border-blue-800 rounded-full px-4 py-1">
+              {isKhmer ? 'ប្រវត្តិ និងបទពិសោធន៍' : 'MY BACKGROUND'}
+            </span>
+            <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 dark:text-slate-400 bg-white/80 dark:bg-slate-850/80 border border-slate-200 dark:border-slate-800 rounded-full px-3 py-1 shadow-2xs">
+              <i className="fa-regular fa-clock text-blue-500"></i>
+              <span>{isKhmer ? 'រយៈពេលអាន ~២ នាទី' : 'Estimated read: 2 min'}</span>
+            </span>
+          </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight mb-4">
             {isKhmer ? 'អំពីខ្ញុំ និងជំនាញឯកទេស' : 'About Me & Expertise'}
           </h2>

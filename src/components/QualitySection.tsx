@@ -13,10 +13,16 @@ export const QualitySection: React.FC = () => {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider font-extrabold text-amber-300 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-1 mb-3">
-            <i className="fa-solid fa-shield-halved"></i>
-            <span>{isKhmer ? 'ការធានាអត្រាក្រាំង ០% (Zero Crash)' : 'Zero Crash Guarantee'}</span>
-          </span>
+          <div className="flex flex-wrap items-center justify-center gap-2 mb-3">
+            <span className="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider font-extrabold text-amber-300 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-1">
+              <i className="fa-solid fa-shield-halved"></i>
+              <span>{isKhmer ? 'ការធានាអត្រាក្រាំង ០% (Zero Crash)' : 'Zero Crash Guarantee'}</span>
+            </span>
+            <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-300 bg-slate-800/80 border border-slate-700/80 rounded-full px-3 py-1 shadow-2xs">
+              <i className="fa-regular fa-clock text-amber-400"></i>
+              <span>{isKhmer ? 'រយៈពេលអាន ~១ នាទី' : 'Estimated read: 1 min'}</span>
+            </span>
+          </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">
             {isKhmer ? 'គុណភាពកូដ និងការតេស្ត QA យ៉ាងហ្មត់ចត់' : 'Code Quality & Strict QA Testing'}
           </h2>

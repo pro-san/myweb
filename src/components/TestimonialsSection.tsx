@@ -1,10 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { TESTIMONIALS } from '../data/portfolioData';
 import { useLanguage } from '../context/LanguageContext';
+import { TestimonialCardSkeleton } from './skeletons/TestimonialCardSkeleton';
 
-export const TestimonialsSection: React.FC = () => {
+interface TestimonialsSectionProps {
+  isLoading?: boolean;
+}
+
+export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ isLoading: externalLoading }) => {
   const { language } = useLanguage();
   const isKhmer = language === 'km';
+  const [isInternalLoading, setIsInternalLoading] = useState(true);
+
+  // Initial mount effect to display smooth loading skeleton before revealing testimonials
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsInternalLoading(false);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const isLoading = externalLoading !== undefined ? externalLoading : isInternalLoading;
 
   return (
     <section className="py-20 bg-slate-50 dark:bg-slate-950 relative transition-colors duration-200">
@@ -25,9 +41,15 @@ export const TestimonialsSection: React.FC = () => {
           </p>
         </div>
 
-        {/* Testimonials Grid */}
+        {/* Testimonials Grid with Skeleton Loading State */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {TESTIMONIALS.map((test) => (
+          {isLoading ? (
+            <>
+              <TestimonialCardSkeleton />
+              <TestimonialCardSkeleton />
+            </>
+          ) : (
+            TESTIMONIALS.map((test) => (
             <div
               key={test.id}
               className="bg-white dark:bg-slate-900 rounded-3xl p-8 border border-slate-200/80 dark:border-slate-800 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
@@ -66,9 +88,10 @@ export const TestimonialsSection: React.FC = () => {
                 </div>
               </div>
             </div>
-          ))}
-        </div>
+          )))
+        }
       </div>
+    </div>
     </section>
   );
 };

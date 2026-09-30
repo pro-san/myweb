@@ -1,11 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PROJECTS } from '../data/portfolioData';
 import { ProjectItem } from '../types';
 import { ProjectModal } from './ProjectModal';
+import { ProjectCardSkeleton } from './skeletons/ProjectCardSkeleton';
 
-export const ProjectsSection: React.FC = () => {
+interface ProjectsSectionProps {
+  isLoading?: boolean;
+}
+
+export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ isLoading: externalLoading }) => {
   const [selectedFilter, setSelectedFilter] = useState<'all' | 'offline' | 'automation' | 'saas'>('all');
   const [activeModalProject, setActiveModalProject] = useState<ProjectItem | null>(null);
+  const [isInternalLoading, setIsInternalLoading] = useState(true);
+
+  // Initial mount effect to display smooth loading skeleton before revealing projects
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsInternalLoading(false);
+    }, 450);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleFilterChange = (tabId: 'all' | 'offline' | 'automation' | 'saas') => {
+    if (tabId === selectedFilter) return;
+    setIsInternalLoading(true);
+    setSelectedFilter(tabId);
+    setTimeout(() => {
+      setIsInternalLoading(false);
+    }, 280);
+  };
+
+  const isLoading = externalLoading !== undefined ? externalLoading : isInternalLoading;
 
   const filteredProjects = PROJECTS.filter((proj) => {
     if (selectedFilter === 'all') return true;
@@ -38,7 +63,7 @@ export const ProjectsSection: React.FC = () => {
             ].map((tab) => (
               <button
                 key={tab.id}
-                onClick={() => setSelectedFilter(tab.id as any)}
+                onClick={() => handleFilterChange(tab.id as any)}
                 className={`px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer ${
                   selectedFilter === tab.id
                     ? 'bg-blue-600 text-white shadow-md'
@@ -51,9 +76,17 @@ export const ProjectsSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Projects Grid */}
+        {/* Projects Grid with Skeleton Loading State */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {filteredProjects.map((project) => {
+          {isLoading ? (
+            <>
+              <ProjectCardSkeleton />
+              <ProjectCardSkeleton />
+              <ProjectCardSkeleton />
+              <ProjectCardSkeleton />
+            </>
+          ) : (
+            filteredProjects.map((project) => {
             const isFeatured = project.isFeatured;
             const isHostel = project.id === 'hostel-management-system';
 
@@ -182,9 +215,10 @@ export const ProjectsSection: React.FC = () => {
                 </div>
               </div>
             );
-          })}
-        </div>
+          })
+        )}
       </div>
+    </div>
 
       {/* Deep-dive Architecture & Specs Modal */}
       <ProjectModal

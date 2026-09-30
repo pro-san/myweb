@@ -8,6 +8,8 @@ export const CodeExecutionLab: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [playbackSpeed, setPlaybackSpeed] = useState<number>(1800);
   const [copiedCode, setCopiedCode] = useState<boolean>(false);
+  const [copiedActiveStep, setCopiedActiveStep] = useState<boolean>(false);
+  const [copiedLog, setCopiedLog] = useState<boolean>(false);
 
   // Custom interactive parameters for Hostel Engine
   const [tenantName, setTenantName] = useState('Zayn Malik');
@@ -59,6 +61,22 @@ export const CodeExecutionLab: React.FC = () => {
     navigator.clipboard.writeText(activeModule.codeLines.join('\n'));
     setCopiedCode(true);
     setTimeout(() => setCopiedCode(false), 2000);
+  };
+
+  const handleCopyActiveStep = () => {
+    const activeLines = activeStep.activeLineNumbers
+      .map((lineNum) => activeModule.codeLines[lineNum - 1])
+      .filter((l) => l !== undefined)
+      .join('\n');
+    navigator.clipboard.writeText(activeLines || activeModule.codeLines.join('\n'));
+    setCopiedActiveStep(true);
+    setTimeout(() => setCopiedActiveStep(false), 2000);
+  };
+
+  const handleCopyLog = () => {
+    navigator.clipboard.writeText(activeStep.logOutput);
+    setCopiedLog(true);
+    setTimeout(() => setCopiedLog(false), 2000);
   };
 
   // Dynamic calculations for Hostel
@@ -184,11 +202,12 @@ export const CodeExecutionLab: React.FC = () => {
 
               <button
                 onClick={handleCopyCode}
-                className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-mono transition-colors flex items-center gap-1.5 cursor-pointer"
-                title="Copy entire source code"
+                className="px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white border border-slate-700 text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer shadow-xs active:scale-95"
+                title="Copy entire source code module to clipboard"
+                aria-label="Copy to Clipboard"
               >
-                <i className={`fa-solid ${copiedCode ? 'fa-check text-emerald-400' : 'fa-copy'}`}></i>
-                <span className="hidden md:inline">{copiedCode ? 'Copied!' : 'Copy Code'}</span>
+                <i className={`fa-solid ${copiedCode ? 'fa-check text-emerald-400' : 'fa-clipboard text-blue-400'}`}></i>
+                <span>{copiedCode ? 'Copied to Clipboard!' : 'Copy to Clipboard'}</span>
               </button>
             </div>
           </div>
@@ -236,9 +255,47 @@ export const CodeExecutionLab: React.FC = () => {
 
           {/* Dual-Pane Code & Execution Workspace */}
           <div className="grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-slate-800">
-            {/* Left Pane: Code Viewer with Highlighted Active Execution Lines */}
-            <div className="lg:col-span-6 p-4 sm:p-6 bg-slate-950/60 font-mono text-xs overflow-x-auto max-h-[580px] select-text">
-              <div className="space-y-1">
+            {/* Left Pane: Code Viewer with Dedicated Snippet Toolbar and Highlighted Active Execution Lines */}
+            <div className="lg:col-span-6 bg-slate-950/70 font-mono text-xs max-h-[580px] flex flex-col select-text">
+              {/* Snippet Toolbar with Copy Buttons */}
+              <div className="flex items-center justify-between px-4 py-2.5 bg-slate-900/90 border-b border-slate-800 text-[11px] shrink-0 sticky top-0 z-10 backdrop-blur">
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <div className="flex items-center gap-1.5 text-slate-500">
+                    <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
+                  </div>
+                  <div className="flex items-center gap-1.5 truncate">
+                    <i className="fa-solid fa-file-code text-blue-400 text-xs"></i>
+                    <span className="font-semibold text-slate-200 truncate">{activeModule.fileName}</span>
+                    <span className="text-[10px] text-slate-500">({activeModule.codeLines.length} lines)</span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={handleCopyActiveStep}
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-750 text-slate-300 hover:text-white border border-slate-700/80 text-[11px] font-sans transition-all cursor-pointer shadow-xs active:scale-95"
+                    title="Copy currently executing code step snippet"
+                  >
+                    <i className={`fa-solid ${copiedActiveStep ? 'fa-check text-emerald-400' : 'fa-code text-sky-400'}`}></i>
+                    <span className="hidden sm:inline">{copiedActiveStep ? 'Step Copied!' : 'Copy Step'}</span>
+                  </button>
+
+                  <button
+                    onClick={handleCopyCode}
+                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-blue-600 hover:bg-blue-500 text-white border border-blue-500 text-[11px] font-sans font-bold transition-all cursor-pointer shadow-sm hover:shadow active:scale-95"
+                    title="Copy complete code snippet to clipboard"
+                    aria-label="Copy code to clipboard"
+                  >
+                    <i className={`fa-solid ${copiedCode ? 'fa-check text-white' : 'fa-clipboard'}`}></i>
+                    <span>{copiedCode ? 'Copied to Clipboard!' : 'Copy to Clipboard'}</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Code Lines Listing */}
+              <div className="p-4 sm:p-6 overflow-x-auto overflow-y-auto flex-1 space-y-1">
                 {activeModule.codeLines.map((line, idx) => {
                   const lineNumber = idx + 1;
                   const isActive = activeStep.activeLineNumbers.includes(lineNumber);
@@ -311,9 +368,19 @@ export const CodeExecutionLab: React.FC = () => {
               <div>
                 <div className="flex items-center justify-between text-xs font-mono font-bold uppercase text-slate-400 mb-2">
                   <span>Runtime Console Stdout</span>
-                  <span className="text-emerald-400 text-[10px] flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Daemon Active
-                  </span>
+                  <div className="flex items-center gap-3">
+                    <span className="text-emerald-400 text-[10px] flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Daemon Active
+                    </span>
+                    <button
+                      onClick={handleCopyLog}
+                      className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-[10px] font-mono border border-slate-700 transition-colors cursor-pointer"
+                      title="Copy runtime logs to clipboard"
+                    >
+                      <i className={`fa-solid ${copiedLog ? 'fa-check text-emerald-400' : 'fa-copy text-slate-400'}`}></i>
+                      <span>{copiedLog ? 'Copied!' : 'Copy Logs'}</span>
+                    </button>
+                  </div>
                 </div>
                 <div className="bg-black/90 text-emerald-400 p-3.5 rounded-xl border border-slate-800 font-mono text-xs leading-relaxed overflow-x-auto">
                   <pre className="whitespace-pre-wrap">{activeStep.logOutput}</pre>
