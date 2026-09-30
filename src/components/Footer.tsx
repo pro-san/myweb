@@ -2,7 +2,11 @@ import React from 'react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { useLanguage } from '../context/LanguageContext';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onOpenRetroArcade?: () => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onOpenRetroArcade }) => {
   const { t, language } = useLanguage();
   const isKhmer = language === 'km';
 
@@ -84,6 +88,21 @@ export const Footer: React.FC = () => {
         <p className="text-xs text-slate-500 m-0 leading-relaxed">
           &copy; 2026 <strong className="text-slate-300 font-bold">PRO DIGITAL</strong>. {isKhmer ? 'កសាងឡើងដោយភាពជាក់លាក់ និងកូដស្អាត។ រក្សាសិទ្ធិគ្រប់យ៉ាង។' : 'Built with precision & clean code. All Rights Reserved.'}
         </p>
+
+        {/* Secret Konami Code Easter Egg Trigger */}
+        {onOpenRetroArcade && (
+          <div className="mt-4 flex items-center justify-center">
+            <button
+              onClick={onOpenRetroArcade}
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/90 hover:bg-slate-850 border border-slate-800 hover:border-cyan-500/50 text-[11px] font-mono text-slate-400 hover:text-cyan-300 transition-all duration-200 cursor-pointer shadow-2xs group"
+              title="Secret Easter Egg: Type ↑ ↑ ↓ ↓ ← → ← → B A on your keyboard or click here to play!"
+            >
+              <span className="text-cyan-400 group-hover:scale-125 transition-transform">👾</span>
+              <span>Konami Code:</span>
+              <span className="text-slate-500 group-hover:text-cyan-300 font-bold tracking-wider">↑ ↑ ↓ ↓ ← → ← → B A</span>
+            </button>
+          </div>
+        )}
       </div>
     </footer>
   );

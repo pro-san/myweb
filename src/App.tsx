@@ -21,13 +21,26 @@ import { Footer } from './components/Footer';
 import { FloatingTelegram } from './components/FloatingTelegram';
 import { BackToTop } from './components/BackToTop';
 import { Toast } from './components/Toast';
+import { RetroArcadeModal } from './components/RetroArcadeModal';
+import { KonamiParticleBurst } from './components/KonamiParticleBurst';
+import { useKonamiCode } from './hooks/useKonamiCode';
 
 export default function App() {
   const [isEstimatorOpen, setIsEstimatorOpen] = useState(false);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
+  const [isRetroArcadeOpen, setIsRetroArcadeOpen] = useState(false);
+  const [showParticleBurst, setShowParticleBurst] = useState(false);
   const [selectedServiceForContact, setSelectedServiceForContact] = useState<string>('');
   const [contactInitialMessage, setContactInitialMessage] = useState<string>('');
   const [showSuccessToast, setShowSuccessToast] = useState(false);
+
+  const handleTriggerKonami = () => {
+    setShowParticleBurst(true);
+    setIsRetroArcadeOpen(true);
+  };
+
+  // Listen to keyboard Konami Code sequence: ↑ ↑ ↓ ↓ ← → ← → B A
+  useKonamiCode(handleTriggerKonami);
 
   const handleSelectService = (serviceName: string) => {
     setSelectedServiceForContact(serviceName);
@@ -124,8 +137,20 @@ export default function App() {
         onClose={() => setIsResumeOpen(false)}
       />
 
-      {/* Footer */}
-      <Footer />
+      {/* Footer with Konami Code Easter Egg trigger */}
+      <Footer onOpenRetroArcade={handleTriggerKonami} />
+
+      {/* Secret Konami Code Retro Arcade Modal */}
+      <RetroArcadeModal
+        isOpen={isRetroArcadeOpen}
+        onClose={() => setIsRetroArcadeOpen(false)}
+      />
+
+      {/* Retro Pixel Particle Burst Celebration */}
+      <KonamiParticleBurst
+        show={showParticleBurst}
+        onComplete={() => setShowParticleBurst(false)}
+      />
 
       {/* Persistent Floating Telegram Action Widget */}
       <FloatingTelegram />
