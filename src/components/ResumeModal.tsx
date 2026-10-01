@@ -58,11 +58,26 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
           {/* Top Bio Banner */}
           <div className="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <h2 className="text-2xl font-black text-slate-900 dark:text-slate-100">
-                PRO DIGITAL ({PERSONAL_INFO.brandName})
-              </h2>
-              <div className="text-sm font-bold text-blue-600 dark:text-blue-400 mt-0.5">
-                Full-Stack Web Developer &amp; Automation Systems Engineer
+              <div className="flex items-center gap-4 mb-2">
+                <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-blue-500/40 shadow-md shrink-0 bg-slate-900">
+                  <img
+                    src="/profile.png"
+                    alt="PRO DIGITAL"
+                    className="w-full h-full object-cover object-top"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src =
+                        'https://lh3.googleusercontent.com/d/1YXKf2l1o1dCC5SPxNdv1TGAAbChA9Y6K';
+                    }}
+                  />
+                </div>
+                <div>
+                  <h2 className="text-2xl font-black text-slate-900 dark:text-slate-100">
+                    PRO DIGITAL ({PERSONAL_INFO.brandName})
+                  </h2>
+                  <div className="text-sm font-bold text-blue-600 dark:text-blue-400 mt-0.5">
+                    Full-Stack Web Developer &amp; Automation Systems Engineer
+                  </div>
+                </div>
               </div>
               <div className="text-xs text-slate-500 dark:text-slate-400 mt-2 flex flex-wrap gap-x-4 gap-y-1">
                 <a

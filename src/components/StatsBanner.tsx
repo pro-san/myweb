@@ -1,10 +1,11 @@
 import React from 'react';
 import { STATS } from '../data/portfolioData';
+import { LiveActivityCounter } from './LiveActivityCounter';
 
 export const StatsBanner: React.FC = () => {
   return (
     <div className="relative max-w-6xl mx-auto px-4 sm:px-6 -mt-10 sm:-mt-14 z-20">
-      <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-8 shadow-xl border border-slate-200/80 dark:border-slate-800 backdrop-blur-md transition-colors duration-200">
+      <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-200/80 dark:border-slate-800 backdrop-blur-md transition-colors duration-200">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-slate-100 dark:divide-slate-800">
           {STATS.map((stat, idx) => (
             <div key={idx} className={`${idx > 0 ? 'pt-4 md:pt-0' : ''} px-2`}>
@@ -22,6 +23,9 @@ export const StatsBanner: React.FC = () => {
             </div>
           ))}
         </div>
+
+        {/* Real-time Credibility Counter (Live Visitors & Recent Deliveries Ticker) */}
+        <LiveActivityCounter />
       </div>
     </div>
   );

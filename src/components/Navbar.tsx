@@ -31,6 +31,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEstimator, onOpenResume })
     { label: t('nav_portal'), href: '#client-portal' },
     { label: t('nav_skills'), href: '#skills' },
     { label: t('nav_process'), href: '#process' },
+    { label: t('nav_global_reach'), href: '#global-reach' },
     { label: t('nav_about'), href: '#about' },
     { label: t('nav_faq'), href: '#faq' },
     { label: t('nav_contact'), href: '#contact' },

@@ -73,6 +73,9 @@ export const Footer: React.FC<FooterProps> = ({ onOpenRetroArcade }) => {
           <a href="#process" className="hover:text-white transition-colors">
             {t('nav_process')}
           </a>
+          <a href="#global-reach" className="hover:text-white transition-colors text-sky-400">
+            {t('nav_global_reach')}
+          </a>
           <a href="#about" className="hover:text-white transition-colors">
             {t('nav_about')}
           </a>

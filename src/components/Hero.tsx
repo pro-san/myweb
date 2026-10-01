@@ -70,6 +70,28 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEstimator, onOpenResume }) => 
           <span>{t('hero_badge')}</span>
         </div>
 
+        {/* Profile Avatar with status beacon */}
+        <div className="relative w-24 h-24 sm:w-28 sm:h-28 mx-auto mb-6">
+          <div className="absolute inset-0 bg-blue-400/20 rounded-full animate-ping opacity-60"></div>
+          <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden shadow-2xl border-3 border-white/90 ring-4 ring-blue-400/30 bg-slate-900">
+            <img
+              src="/profile.png"
+              alt="PRO DIGITAL"
+              className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-300"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src =
+                  'https://lh3.googleusercontent.com/d/1YXKf2l1o1dCC5SPxNdv1TGAAbChA9Y6K';
+              }}
+            />
+          </div>
+          <span
+            className="absolute bottom-1 right-1 w-5 h-5 rounded-full bg-emerald-400 border-2 border-slate-900 shadow-md flex items-center justify-center text-[10px] text-slate-950 font-bold"
+            title="Available for Contracts"
+          >
+            ✓
+          </span>
+        </div>
+
         {/* Name & Title */}
         <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4 text-white">
           {t('hero_greeting')} <span className="text-white drop-shadow-sm">PRO DIGITAL</span>

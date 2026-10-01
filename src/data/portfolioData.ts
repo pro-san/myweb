@@ -12,6 +12,8 @@ export const PERSONAL_INFO = {
   whatsappMessage: 'Hi PRO DIGITAL! I saw your portfolio and want to hire you for a project.',
   email: 'kimsan@dev.com',
   githubUrl: 'https://github.com/mrtechpk1-ai/FBMprime',
+  avatarUrl: '/profile.png',
+  driveProfileUrl: 'https://drive.google.com/file/d/1YXKf2l1o1dCC5SPxNdv1TGAAbChA9Y6K/view?usp=drivesdk',
   location: 'Cambodia (St2002, Phnom Penh, KH, 90115)',
   locationMapUrl: 'https://maps.app.goo.gl/gjZyiR7zwDgvrpKy5?g_st=ac',
   formspreeEndpoint: 'https://formspree.io/f/xqpkebro',

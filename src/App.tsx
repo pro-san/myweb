@@ -14,6 +14,7 @@ import { SkillsSection } from './components/SkillsSection';
 import { ProcessSection } from './components/ProcessSection';
 import { QualitySection } from './components/QualitySection';
 import { TestimonialsSection } from './components/TestimonialsSection';
+import { GlobalReachSection } from './components/GlobalReachSection';
 import { AboutSection } from './components/AboutSection';
 import { ContactSection } from './components/ContactSection';
 import { FAQSection } from './components/FAQSection';
@@ -109,6 +110,11 @@ export default function App() {
 
         {/* Client Reviews & Testimonials */}
         <TestimonialsSection />
+
+        {/* Global Reach Section with Interactive D3 World Map */}
+        <GlobalReachSection
+          onContactClick={(region) => handleSelectService(`Project consultation for ${region}`)}
+        />
 
         {/* About Me & Expertise Section */}
         <AboutSection />

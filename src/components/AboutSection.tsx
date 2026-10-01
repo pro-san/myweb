@@ -101,18 +101,44 @@ export const AboutSection: React.FC = () => {
             {/* Right Card: Avatar & Quick Action */}
             <div className="lg:col-span-5 text-center">
               <div className="bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800/80 dark:to-slate-850 p-8 rounded-2xl border border-slate-200/80 dark:border-slate-700 shadow-md flex flex-col items-center">
-                {/* Avatar with pulsing rings */}
-                <div className="relative w-28 h-28 mx-auto mb-6 flex items-center justify-center">
+                {/* Avatar with pulsing rings and verified photo */}
+                <div className="relative w-32 h-32 mx-auto mb-6 flex items-center justify-center">
                   <div className="absolute inset-0 bg-blue-500/20 rounded-full animate-ping opacity-75"></div>
                   <div className="absolute inset-0 bg-emerald-500/20 rounded-full animate-pulse scale-110"></div>
-                  <div className="relative w-28 h-28 rounded-full bg-white dark:bg-slate-900 flex items-center justify-center shadow-lg border-4 border-slate-100 dark:border-slate-800 z-10 text-blue-600 dark:text-blue-400 text-4xl">
-                    <i className="fa-solid fa-user-astronaut"></i>
+                  <div className="relative w-32 h-32 rounded-full overflow-hidden shadow-2xl border-4 border-white dark:border-slate-800 z-10 ring-2 ring-blue-500/40 bg-slate-900">
+                    <img
+                      src="/profile.png"
+                      alt="PRO DIGITAL Profile"
+                      className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-300"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src =
+                          'https://lh3.googleusercontent.com/d/1YXKf2l1o1dCC5SPxNdv1TGAAbChA9Y6K';
+                      }}
+                    />
                   </div>
+                  {/* Verified Online Beacon */}
+                  <span
+                    className="absolute bottom-1 right-1 z-20 w-6 h-6 rounded-full bg-emerald-500 border-2 border-white dark:border-slate-900 shadow-md flex items-center justify-center text-[10px] text-white"
+                    title="Active & Available"
+                  >
+                    <i className="fa-solid fa-check text-[10px]"></i>
+                  </span>
                 </div>
 
-                <h4 className="text-xl font-black text-slate-900 dark:text-slate-100 mb-1">
-                  PRO DIGITAL
-                </h4>
+                <div className="flex items-center justify-center gap-2 mb-1">
+                  <h4 className="text-xl font-black text-slate-900 dark:text-slate-100">
+                    PRO DIGITAL
+                  </h4>
+                  <a
+                    href="https://drive.google.com/file/d/1YXKf2l1o1dCC5SPxNdv1TGAAbChA9Y6K/view?usp=drivesdk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-blue-600 dark:text-blue-400 hover:text-blue-500 transition-colors p-1"
+                    title="View Original Profile on Google Drive"
+                  >
+                    <i className="fa-solid fa-arrow-up-right-from-square text-[11px]"></i>
+                  </a>
+                </div>
                 <p className="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-wider mb-6 pb-4 border-b border-slate-200 dark:border-slate-700 w-full">
                   {isKhmer ? 'ស្ថាបត្យករវេបសាយ & ស្វ័យប្រវត្តិកម្ម' : 'Web & Automation Architect'}
                 </p>

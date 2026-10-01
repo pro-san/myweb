@@ -18,6 +18,7 @@ export const TRANSLATIONS: Translations = {
   nav_process: { en: 'Process', km: 'ដំណើរការ' },
   nav_roi: { en: 'ROI Calculator', km: 'គណនាផលសន្សំ' },
   nav_portal: { en: 'Client Portal', km: 'តាមដានគម្រោង' },
+  nav_global_reach: { en: 'Global Reach', km: 'វិសាលភាពសកល' },
   nav_about: { en: 'About Me', km: 'អំពីខ្ញុំ' },
   nav_faq: { en: 'FAQ', km: 'សំណួរញឹកញាប់' },
   nav_contact: { en: 'Contact', km: 'ទំនាក់ទំនង' },
@@ -47,6 +48,10 @@ export const TRANSLATIONS: Translations = {
   stat_satisfaction: { en: 'Client Satisfaction Rate', km: 'កម្រិតពេញចិត្តរបស់អតិថិជន' },
   stat_users: { en: 'Users Impacted Daily', km: 'អ្នកប្រើប្រាស់ប្រចាំថ្ងៃ' },
   stat_reach: { en: 'Organic Reach Scaled', km: 'ការទស្សនាលើប្រព័ន្ធផ្សព្វផ្សាយ' },
+  live_badge: { en: 'LIVE TELEMETRY', km: 'ទិន្នន័យជាក់ស្តែង' },
+  live_visitors_label: { en: 'active viewing now', km: 'នាក់កំពុងទស្សនា' },
+  live_delivered_count: { en: 'Commercial Projects Shipped', km: 'គម្រោងសូហ្វវែរដែលបានប្រគល់រួច' },
+  live_latest_shipped: { en: 'Latest Delivered', km: 'ទើបប្រគល់ចុងក្រោយ' },
 
   // Services
   services_badge: { en: 'CLIENT SERVICES', km: 'សេវាកម្មជំនាញ' },
@@ -93,6 +98,14 @@ export const TRANSLATIONS: Translations = {
   portal_subtitle: {
     en: 'Experience how PRO DIGITAL guarantees 100% transparency with live staging previews, sprint milestone checkpoints, automated test suites, and verified IP delivery.',
     km: 'ទទួលបានបទពិសោធន៍នៃតម្លាភាព ១០០% ជាមួយដំណាក់កាលគម្រោងច្បាស់លាស់ តំណភ្ជាប់ Preview ផ្ទាល់ ការតេស្តស្វ័យប្រវត្តិ និងការប្រគល់កម្មសិទ្ធិបញ្ញាពេញលេញ។',
+  },
+
+  // Global Reach
+  global_badge: { en: 'INTERNATIONAL CLIENT FOOTPRINT', km: 'វិសាលភាពអតិថិជនអន្តរជាតិ' },
+  global_title: { en: 'Global Engineering Reach & Impact', km: 'វិសាលភាពបម្រើការងារបច្ចេកវិទ្យាទូទាំងពិភពលោក' },
+  global_subtitle: {
+    en: 'Interactive D3 map visualizing active production software deployments across North America, Europe, and Southeast Asia with real-time connectivity.',
+    km: 'ផែនទីពិភពលោកអន្តរកម្ម D3 បង្ហាញពីប្រព័ន្ធសូហ្វវែរដែលកំពុងដំណើរការនៅអាមេរិកខាងជើង អឺរ៉ុប និងអាស៊ីអាគ្នេយ៍។',
   },
 
   // Process
